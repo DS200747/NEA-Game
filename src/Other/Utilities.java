@@ -9,9 +9,9 @@ public class Utilities {
     
     public static String GetHashedPassword(String Password) throws Exception{
         
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(Password.getBytes());
-        byte[] digest = md.digest();
+        MessageDigest messdi = MessageDigest.getInstance("SHA-512");
+        messdi.update(Password.getBytes());
+        byte[] digest = messdi.digest();
         StringBuffer hexString = new StringBuffer();
         
         for (int i = 0; i < digest.length; i++) {

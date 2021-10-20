@@ -138,7 +138,7 @@ public class RegisterScreen extends javax.swing.JFrame {
             String LoweredUsername= Username.toLowerCase();
             System.out.println(LoweredUsername);
             
-            if (LoweredUsername.contains("fuck")||LoweredUsername.contains("shit") || LoweredUsername.contains("bitch")){
+            if (LoweredUsername.contains("dog")||LoweredUsername.contains("yellow") || LoweredUsername.contains("four")){
                 InappropriateUsernameErrorMessage.setVisible(true);
                 check = true;
                 break;
@@ -154,11 +154,11 @@ public class RegisterScreen extends javax.swing.JFrame {
                 }
             }
             
+            ExistingUsernames.clear();
+            
             if (UniqueUsernameErrorMessage.isVisible()== true) {
                 break;
             }
-          
-            ExistingUsernames.clear();
             
             if (Email.contains("@") && Email.contains(".")) {
 

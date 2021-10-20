@@ -8,12 +8,12 @@ public class Monster {
     
 public static Random rand = new Random();    
 
-int MonsterID;
-String MonsterName;
-int MonsterHealth;
-int MaxMonsterAttack;
-int MinMonsterAttack;
-String MonsterType;
+private int MonsterID;
+private String MonsterName;
+private int MonsterHealth;
+private int MaxMonsterAttack;
+private int MinMonsterAttack;
+private String MonsterType;
 
     public Monster(int MonsterID, String MonsterName, int MonsterHealth, int MaxMonsterAttack, int MinMonsterAttack, String MonsterType) {
         this.MonsterID = MonsterID;

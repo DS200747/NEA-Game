@@ -4,10 +4,10 @@ package Objects;
 
 public class User {
     
-    String Username;
-    String Email;
-    String Password;
-    String JoinDate;
+    private String Username;
+    private String Email;
+    private String Password;
+    private String JoinDate;
 
     public User(String Username, String Email, String Password, String JoinDate) {
         this.Username = Username;

@@ -6,13 +6,13 @@ import java.time.LocalDate;
 
 public class Character {
     
-   int CharacterID;
-   String Username;
-   String Nickname;
-   String CharacterGender;
-   int ClassID;
-   int DomainAmount;
-   String LastDomainDate;
+   private int CharacterID;
+   private String Username;
+   private String Nickname;
+   private String CharacterGender;
+   private int ClassID;
+   private int DomainAmount;
+   private String LastDomainDate;
 
     public Character(int CharacterID, String Username, String Nickname, String CharacterGender, int ClassID, int DomainAmount, String LastDomainDate) {
         this.CharacterID = CharacterID;

@@ -4,12 +4,12 @@ package Objects;
 
 public class Item {
     
-    int ItemID;
-    String ItemName;
-    String ItemType;
-    String Buff;
-    int BuffAmount;
-    String Domain;
+    private int ItemID;
+    private String ItemName;
+    private String ItemType;
+    private String Buff;
+    private int BuffAmount;
+    private String Domain;
 
     public Item(int ItemID, String ItemName, String ItemType, String Buff, int BuffAmount, String Domain) {
         this.ItemID = ItemID;

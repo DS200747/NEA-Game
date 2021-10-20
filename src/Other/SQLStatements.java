@@ -138,6 +138,7 @@ public class SQLStatements {
         return CurrentUser != null;
 
     }
+    
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="SQL Statements To Do With Characters Table">
@@ -149,7 +150,7 @@ public class SQLStatements {
             
             if(resultSet.next()){
                 resultSet.moveToInsertRow();
-                //Primary Key
+                //Primary Key - auto number
                 resultSet.updateString("Username", character.getUsername());
                 resultSet.updateString("Nickname", character.getNickname());
                 resultSet.updateString("CharacterGender", character.getCharacterGender());
@@ -159,7 +160,7 @@ public class SQLStatements {
                 resultSet.insertRow();
             }
             
-            System.out.println("Added successfully");
+            System.out.println("Added successfully"); // for testing 
             
             resultSet.close();
             connection.close();
@@ -169,18 +170,7 @@ public class SQLStatements {
         }
     }
     
-    public static int CountingCharacters(String Username){
-        try{
-        String sql = "SELECT COUNT CharacterID FROM Characters WHERE Username = "+ Username;
-        ResultSet resultSet = ExecuteQuery(sql, getConnection());
-        
-            System.out.println(resultSet);//for testing
-           
-    }
-        catch (Exception e){
-            System.out.println("Error with counting characters: "+e);
-        }
-    }
+
     
     public static int GetDomainsPlayed(int CharacterID){
         int DomainsPlayed = -1;
@@ -222,6 +212,41 @@ public class SQLStatements {
         }
         
         return DomainDate;
+    }
+    
+    public static int CountingCharacters (String Username){
+        int CharacterNumber = -1;
+        
+        try{
+            String sql = "SELECT COUNT * FROM Characters WHERE Username ="+Username;
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            
+        }
+        catch (Exception e){
+            System.out.println("Error with counting characters: "+e);
+        }
+        
+        return CharacterNumber;
+    }
+    
+    public static ArrayList<Objects.Character> GetAllUserCharacters(String Username){
+        ArrayList<Objects.Character> UserCharacters = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM Characters WHERE Username="+Username;
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            while (resultSet.next()) {
+                Objects.Character UserCharacter = new Objects.Character(resultSet.getInt("CharacterID"), resultSet.getString("Username"), resultSet.getString("Nickname"), resultSet.getString("CharacterGender"), resultSet.getInt("ClassID"), resultSet.getInt("DomainAmount"), resultSet.getString("LastDomainDate"));
+                UserCharacters.add(UserCharacter);
+            }
+            connection.close();
+            return UserCharacters;
+        }
+        catch (Exception e){
+            System.out.println("Error with getting all user characters: "+e);
+            return null;
+        }
     }
     
     // </editor-fold>

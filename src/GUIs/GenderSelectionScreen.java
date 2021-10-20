@@ -207,13 +207,13 @@ public class GenderSelectionScreen extends javax.swing.JFrame {
 
         CharacterCreatedConfirmBox.setVisible(true);
 
-        GUIs.ModeSelectionMenu ModeMenu = new GUIs.ModeSelectionMenu();
+        GUIs.TutorialAskScreen TutorialAsk = new GUIs.TutorialAskScreen();
 
         int WidthSize = (int) tk.getScreenSize().getWidth();
         int HeightSize = (int) tk.getScreenSize().getHeight();
 
-        ModeMenu.setSize(WidthSize, HeightSize);
-        ModeMenu.setVisible(true);
+        TutorialAsk.setSize(WidthSize, HeightSize);
+        TutorialAsk.setVisible(true);
         this.dispose();
 
 

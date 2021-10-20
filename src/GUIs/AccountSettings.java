@@ -6,33 +6,43 @@
 package GUIs;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 /**
  *
  * @author daisy
  */
 public class AccountSettings extends javax.swing.JFrame {
-    
+
     Toolkit tk = Toolkit.getDefaultToolkit();
+    
+    public String CurrentHashedPassword;
 
     /**
      * Creates new form AccountSettings
      */
     public AccountSettings() {
         initComponents();
-        
+
         UsernameSection.setVisible(false);
         UsernameField.setVisible(false);
         UsernameConfirmButton.setVisible(false);
-        
+        UniqueUsernameErrorMessage.setVisible(false);
+        LongUsernameErrorMessage.setVisible(false);
+        InappropriateUsernameErrorMessage.setVisible(false);
+
         PasswordSection.setVisible(false);
         CurrentPasswordField.setVisible(false);
         NewPasswordField.setVisible(false);
         PasswordConfirmButton.setVisible(false);
-        
+        PasswordCharactersErrorMessage.setVisible(false);
+
         EmailSection.setVisible(false);
         EmailField.setVisible(false);
         EmailConfirmButton.setVisible(false);
+        InvalidEmailErrorMessage.setVisible(false);
+        UniqueEmailErrorMessage.setVisible(false);
+        
     }
 
     /**
@@ -44,12 +54,18 @@ public class AccountSettings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        EmailConfirmButton = new javax.swing.JButton();
+        PasswordCharactersErrorMessage = new javax.swing.JLabel();
+        UniqueEmailErrorMessage = new javax.swing.JLabel();
+        InvalidEmailErrorMessage = new javax.swing.JLabel();
+        InappropriateUsernameErrorMessage = new javax.swing.JLabel();
+        LongUsernameErrorMessage = new javax.swing.JLabel();
+        UniqueUsernameErrorMessage = new javax.swing.JLabel();
         EmailField = new javax.swing.JTextField();
+        EmailConfirmButton = new javax.swing.JButton();
         EmailSection = new javax.swing.JLabel();
+        NewPasswordField = new javax.swing.JPasswordField();
         PasswordConfirmButton = new javax.swing.JButton();
-        NewPasswordField = new javax.swing.JTextField();
-        CurrentPasswordField = new javax.swing.JTextField();
+        CurrentPasswordField = new javax.swing.JPasswordField();
         PasswordSection = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
         UsernameButton = new javax.swing.JButton();
@@ -63,6 +79,38 @@ public class AccountSettings extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        PasswordCharactersErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Password Characters Error Message.png"))); // NOI18N
+        getContentPane().add(PasswordCharactersErrorMessage);
+        PasswordCharactersErrorMessage.setBounds(720, 770, 500, 150);
+
+        UniqueEmailErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/UniqueEmailErrorMessage.png"))); // NOI18N
+        getContentPane().add(UniqueEmailErrorMessage);
+        UniqueEmailErrorMessage.setBounds(720, 760, 510, 140);
+
+        InvalidEmailErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Invalid Email Error.png"))); // NOI18N
+        getContentPane().add(InvalidEmailErrorMessage);
+        InvalidEmailErrorMessage.setBounds(730, 780, 390, 100);
+
+        InappropriateUsernameErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Inappropriate Username Error Message.png"))); // NOI18N
+        getContentPane().add(InappropriateUsernameErrorMessage);
+        InappropriateUsernameErrorMessage.setBounds(720, 760, 430, 140);
+
+        LongUsernameErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Long Username Error.png"))); // NOI18N
+        getContentPane().add(LongUsernameErrorMessage);
+        LongUsernameErrorMessage.setBounds(720, 790, 510, 90);
+
+        UniqueUsernameErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Unique Username Error Message.png"))); // NOI18N
+        getContentPane().add(UniqueUsernameErrorMessage);
+        UniqueUsernameErrorMessage.setBounds(720, 680, 500, 300);
+
+        EmailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmailField);
+        EmailField.setBounds(150, 550, 1640, 70);
+
         EmailConfirmButton.setBorderPainted(false);
         EmailConfirmButton.setContentAreaFilled(false);
         EmailConfirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,17 +121,17 @@ public class AccountSettings extends javax.swing.JFrame {
         getContentPane().add(EmailConfirmButton);
         EmailConfirmButton.setBounds(790, 890, 370, 170);
 
-        EmailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(EmailField);
-        EmailField.setBounds(150, 550, 1640, 70);
-
         EmailSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Email Section.jpg"))); // NOI18N
         getContentPane().add(EmailSection);
         EmailSection.setBounds(10, 420, 1910, 673);
+
+        NewPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewPasswordFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NewPasswordField);
+        NewPasswordField.setBounds(151, 700, 1640, 60);
 
         PasswordConfirmButton.setBorderPainted(false);
         PasswordConfirmButton.setContentAreaFilled(false);
@@ -94,8 +142,6 @@ public class AccountSettings extends javax.swing.JFrame {
         });
         getContentPane().add(PasswordConfirmButton);
         PasswordConfirmButton.setBounds(779, 885, 380, 180);
-        getContentPane().add(NewPasswordField);
-        NewPasswordField.setBounds(150, 700, 1640, 60);
         getContentPane().add(CurrentPasswordField);
         CurrentPasswordField.setBounds(150, 550, 1640, 70);
 
@@ -178,13 +224,76 @@ public class AccountSettings extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void UsernameConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameConfirmButtonActionPerformed
-        // TODO add your handling code here:
+        
+        UniqueUsernameErrorMessage.setVisible(false);
+        LongUsernameErrorMessage.setVisible(false);
+        InappropriateUsernameErrorMessage.setVisible(false);
+        
+        String NewUsername = UsernameField.getText();
+        boolean check = false;
+
+        while (true) {
+            if (NewUsername.length() > 25) {
+                LongUsernameErrorMessage.setVisible(true);
+                check = true;
+                break;
+            }
+            
+            String LoweredUsername= NewUsername.toLowerCase();
+            System.out.println(LoweredUsername);
+            
+            if (LoweredUsername.contains("dog")||LoweredUsername.contains("yellow") || LoweredUsername.contains("four")){
+                InappropriateUsernameErrorMessage.setVisible(true);
+                check = true;
+                break;
+            }
+            
+            ArrayList<String> ExistingUsernames = Other.SQLStatements.GetExistingUsernames();
+
+            for (int i = 0; i < ExistingUsernames.size(); i++) {
+                if (ExistingUsernames.get(i).equals(NewUsername)) {
+                    UniqueUsernameErrorMessage.setVisible(true);
+                    check = true;
+                    break;
+                }
+            }
+            
+            ExistingUsernames.clear();
+            
+             if (UniqueUsernameErrorMessage.isVisible()== true) {
+                break;
+            }
+             
+             break;
+        }
+        
+        if (check == false){
+            //ADD UPDATE BIT HERE
+        }
+
+
     }//GEN-LAST:event_UsernameConfirmButtonActionPerformed
 
     private void UsernameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameButtonActionPerformed
         UsernameSection.setVisible(true);
         UsernameField.setVisible(true);
         UsernameConfirmButton.setVisible(true);
+ 
+        UniqueUsernameErrorMessage.setVisible(false);
+        LongUsernameErrorMessage.setVisible(false);
+        InappropriateUsernameErrorMessage.setVisible(false);
+
+        PasswordSection.setVisible(false);
+        CurrentPasswordField.setVisible(false);
+        NewPasswordField.setVisible(false);
+        PasswordConfirmButton.setVisible(false);
+        PasswordCharactersErrorMessage.setVisible(false);
+
+        EmailSection.setVisible(false);
+        EmailField.setVisible(false);
+        EmailConfirmButton.setVisible(false);
+        InvalidEmailErrorMessage.setVisible(false);
+        UniqueEmailErrorMessage.setVisible(false);
     }//GEN-LAST:event_UsernameButtonActionPerformed
 
     private void PasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordButtonActionPerformed
@@ -192,25 +301,130 @@ public class AccountSettings extends javax.swing.JFrame {
         CurrentPasswordField.setVisible(true);
         NewPasswordField.setVisible(true);
         PasswordConfirmButton.setVisible(true);
+        
+        UsernameSection.setVisible(false);
+        UsernameField.setVisible(false);
+        UsernameConfirmButton.setVisible(false);
+        UniqueUsernameErrorMessage.setVisible(false);
+        LongUsernameErrorMessage.setVisible(false);
+        InappropriateUsernameErrorMessage.setVisible(false);
+
+        PasswordCharactersErrorMessage.setVisible(false);
+
+        EmailSection.setVisible(false);
+        EmailField.setVisible(false);
+        EmailConfirmButton.setVisible(false);
+        InvalidEmailErrorMessage.setVisible(false);
+        UniqueEmailErrorMessage.setVisible(false);
     }//GEN-LAST:event_PasswordButtonActionPerformed
 
     private void PasswordConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordConfirmButtonActionPerformed
-        // TODO add your handling code here:
+        PasswordCharactersErrorMessage.setVisible(false);
+        
+        String CurrentPassword = new String(CurrentPasswordField.getPassword());
+        try{
+        CurrentHashedPassword = Other.Utilities.GetHashedPassword(CurrentPassword);
+        }catch (Exception e){
+            System.out.println("Error with hashing password in account settings: "+e);
+        }
+        
+        String NewPassword = new String(NewPasswordField.getPassword());
+        boolean check = false;
+        
+        //NEW TO MAKE THEM PASSWORD FIELDS AND NOT TEXT FIELDS
+        
+        while (true){
+            
+            if (CurrentHashedPassword.equals(Other.NEAGame.CurrentUser.get(0).getPassword())){
+                
+            }
+            
+            
+            if (NewPassword.length() < 8) {
+                PasswordCharactersErrorMessage.setVisible(true);
+                check = true;
+                break;
+            }
+        }
+        
+        
+        
     }//GEN-LAST:event_PasswordConfirmButtonActionPerformed
 
     private void EmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailButtonActionPerformed
         EmailSection.setVisible(true);
         EmailField.setVisible(true);
         EmailConfirmButton.setVisible(true);
+        
+        UsernameSection.setVisible(false);
+        UsernameField.setVisible(false);
+        UsernameConfirmButton.setVisible(false);
+        UniqueUsernameErrorMessage.setVisible(false);
+        LongUsernameErrorMessage.setVisible(false);
+        InappropriateUsernameErrorMessage.setVisible(false);
+
+        PasswordSection.setVisible(false);
+        CurrentPasswordField.setVisible(false);
+        NewPasswordField.setVisible(false);
+        PasswordConfirmButton.setVisible(false);
+        PasswordCharactersErrorMessage.setVisible(false);
+
+        InvalidEmailErrorMessage.setVisible(false);
+        UniqueEmailErrorMessage.setVisible(false);
     }//GEN-LAST:event_EmailButtonActionPerformed
+
+    private void EmailConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailConfirmButtonActionPerformed
+        InvalidEmailErrorMessage.setVisible(false);
+        UniqueEmailErrorMessage.setVisible(false);
+        
+        String NewEmail = EmailField.getText();
+        boolean check = false;
+        
+        while(true){
+            if (NewEmail.contains("@") && NewEmail.contains(".")) {
+
+            } else {
+                InvalidEmailErrorMessage.setVisible(true);
+                check = true;
+                break;
+            }
+            
+            ArrayList<String> ExistingEmails = Other.SQLStatements.GetExistingEmails();
+            
+            for (int i = 0; i < ExistingEmails.size(); i++) {
+                if (ExistingEmails.get(i).equals(NewEmail)) {
+                    UniqueEmailErrorMessage.setVisible(true);
+                    check = true;
+                    break;
+                }
+            }
+            
+            ExistingEmails.clear();
+            
+            if(UniqueEmailErrorMessage.isVisible() == true){
+                break;
+            }
+            
+            break;
+        }
+        
+        if (check == false){
+            //ADD UPDATE BIT HERE
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_EmailConfirmButtonActionPerformed
 
     private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailFieldActionPerformed
 
-    private void EmailConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailConfirmButtonActionPerformed
+    private void NewPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewPasswordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmailConfirmButtonActionPerformed
+    }//GEN-LAST:event_NewPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,15 +464,21 @@ public class AccountSettings extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel Background;
-    private javax.swing.JTextField CurrentPasswordField;
+    private javax.swing.JPasswordField CurrentPasswordField;
     private javax.swing.JButton EmailButton;
     private javax.swing.JButton EmailConfirmButton;
     private javax.swing.JTextField EmailField;
     private javax.swing.JLabel EmailSection;
-    private javax.swing.JTextField NewPasswordField;
+    private javax.swing.JLabel InappropriateUsernameErrorMessage;
+    private javax.swing.JLabel InvalidEmailErrorMessage;
+    private javax.swing.JLabel LongUsernameErrorMessage;
+    private javax.swing.JPasswordField NewPasswordField;
     private javax.swing.JButton PasswordButton;
+    private javax.swing.JLabel PasswordCharactersErrorMessage;
     private javax.swing.JButton PasswordConfirmButton;
     private javax.swing.JLabel PasswordSection;
+    private javax.swing.JLabel UniqueEmailErrorMessage;
+    private javax.swing.JLabel UniqueUsernameErrorMessage;
     private javax.swing.JButton UsernameButton;
     private javax.swing.JButton UsernameConfirmButton;
     private javax.swing.JTextField UsernameField;
