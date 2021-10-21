@@ -60,19 +60,19 @@ public class AccountSettings extends javax.swing.JFrame {
         InappropriateUsernameErrorMessage = new javax.swing.JLabel();
         LongUsernameErrorMessage = new javax.swing.JLabel();
         UniqueUsernameErrorMessage = new javax.swing.JLabel();
-        EmailField = new javax.swing.JTextField();
-        EmailConfirmButton = new javax.swing.JButton();
-        EmailSection = new javax.swing.JLabel();
-        NewPasswordField = new javax.swing.JPasswordField();
-        PasswordConfirmButton = new javax.swing.JButton();
-        CurrentPasswordField = new javax.swing.JPasswordField();
-        PasswordSection = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
         UsernameButton = new javax.swing.JButton();
-        PasswordButton = new javax.swing.JButton();
         EmailButton = new javax.swing.JButton();
-        UsernameField = new javax.swing.JTextField();
+        PasswordButton = new javax.swing.JButton();
+        PasswordConfirmButton = new javax.swing.JButton();
+        NewPasswordField = new javax.swing.JPasswordField();
+        CurrentPasswordField = new javax.swing.JPasswordField();
+        PasswordSection = new javax.swing.JLabel();
+        EmailConfirmButton = new javax.swing.JButton();
+        EmailField = new javax.swing.JTextField();
+        EmailSection = new javax.swing.JLabel();
         UsernameConfirmButton = new javax.swing.JButton();
+        UsernameField = new javax.swing.JTextField();
         UsernameSection = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
@@ -103,52 +103,6 @@ public class AccountSettings extends javax.swing.JFrame {
         getContentPane().add(UniqueUsernameErrorMessage);
         UniqueUsernameErrorMessage.setBounds(720, 680, 500, 300);
 
-        EmailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(EmailField);
-        EmailField.setBounds(150, 550, 1640, 70);
-
-        EmailConfirmButton.setBorderPainted(false);
-        EmailConfirmButton.setContentAreaFilled(false);
-        EmailConfirmButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailConfirmButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(EmailConfirmButton);
-        EmailConfirmButton.setBounds(790, 890, 370, 170);
-
-        EmailSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Email Section.jpg"))); // NOI18N
-        getContentPane().add(EmailSection);
-        EmailSection.setBounds(10, 420, 1910, 673);
-
-        NewPasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewPasswordFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(NewPasswordField);
-        NewPasswordField.setBounds(151, 700, 1640, 60);
-
-        PasswordConfirmButton.setBorderPainted(false);
-        PasswordConfirmButton.setContentAreaFilled(false);
-        PasswordConfirmButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordConfirmButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(PasswordConfirmButton);
-        PasswordConfirmButton.setBounds(779, 885, 380, 180);
-        getContentPane().add(CurrentPasswordField);
-        CurrentPasswordField.setBounds(150, 550, 1640, 70);
-
-        PasswordSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Password Section.jpg"))); // NOI18N
-        getContentPane().add(PasswordSection);
-        PasswordSection.setBounds(10, 430, 1910, 650);
-
         BackButton.setBorderPainted(false);
         BackButton.setContentAreaFilled(false);
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +123,16 @@ public class AccountSettings extends javax.swing.JFrame {
         getContentPane().add(UsernameButton);
         UsernameButton.setBounds(209, 245, 310, 140);
 
+        EmailButton.setBorderPainted(false);
+        EmailButton.setContentAreaFilled(false);
+        EmailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmailButton);
+        EmailButton.setBounds(1419, 255, 310, 140);
+
         PasswordButton.setBorderPainted(false);
         PasswordButton.setContentAreaFilled(false);
         PasswordButton.addActionListener(new java.awt.event.ActionListener() {
@@ -179,17 +143,51 @@ public class AccountSettings extends javax.swing.JFrame {
         getContentPane().add(PasswordButton);
         PasswordButton.setBounds(809, 245, 300, 150);
 
-        EmailButton.setBorderPainted(false);
-        EmailButton.setContentAreaFilled(false);
-        EmailButton.addActionListener(new java.awt.event.ActionListener() {
+        PasswordConfirmButton.setBorderPainted(false);
+        PasswordConfirmButton.setContentAreaFilled(false);
+        PasswordConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailButtonActionPerformed(evt);
+                PasswordConfirmButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(EmailButton);
-        EmailButton.setBounds(1419, 255, 310, 140);
-        getContentPane().add(UsernameField);
-        UsernameField.setBounds(149, 552, 1640, 60);
+        getContentPane().add(PasswordConfirmButton);
+        PasswordConfirmButton.setBounds(779, 885, 380, 180);
+
+        NewPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewPasswordFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NewPasswordField);
+        NewPasswordField.setBounds(151, 700, 1640, 60);
+        getContentPane().add(CurrentPasswordField);
+        CurrentPasswordField.setBounds(150, 550, 1640, 70);
+
+        PasswordSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Password Section.jpg"))); // NOI18N
+        getContentPane().add(PasswordSection);
+        PasswordSection.setBounds(10, 430, 1910, 650);
+
+        EmailConfirmButton.setBorderPainted(false);
+        EmailConfirmButton.setContentAreaFilled(false);
+        EmailConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailConfirmButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmailConfirmButton);
+        EmailConfirmButton.setBounds(790, 890, 370, 170);
+
+        EmailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EmailField);
+        EmailField.setBounds(150, 550, 1640, 70);
+
+        EmailSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Email Section.jpg"))); // NOI18N
+        getContentPane().add(EmailSection);
+        EmailSection.setBounds(10, 420, 1910, 673);
 
         UsernameConfirmButton.setBorderPainted(false);
         UsernameConfirmButton.setContentAreaFilled(false);
@@ -200,6 +198,8 @@ public class AccountSettings extends javax.swing.JFrame {
         });
         getContentPane().add(UsernameConfirmButton);
         UsernameConfirmButton.setBounds(789, 885, 370, 170);
+        getContentPane().add(UsernameField);
+        UsernameField.setBounds(149, 552, 1640, 60);
 
         UsernameSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Username Section.jpg"))); // NOI18N
         getContentPane().add(UsernameSection);
@@ -268,7 +268,9 @@ public class AccountSettings extends javax.swing.JFrame {
         }
         
         if (check == false){
-            //ADD UPDATE BIT HERE
+            Objects.User ChangingUsername = new Objects.User(NewUsername, Other.NEAGame.CurrentUser.get(0).getEmail(),Other.NEAGame.CurrentUser.get(0).getPassword(),Other.NEAGame.CurrentUser.get(0).getJoinDate());
+            Other.SQLStatements.UpdateUser(ChangingUsername);
+            Other.Utilities.UpdateCurrentUser(ChangingUsername);
         }
 
 

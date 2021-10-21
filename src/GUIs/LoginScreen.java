@@ -116,6 +116,8 @@ public class LoginScreen extends javax.swing.JFrame {
         if(!Other.SQLStatements.UserLogin(Username, Password, Email)){
             InvalidInfoErrorMessage.setVisible(true);
         }else{
+            Objects.User CurrentUser = new Objects.User(Username, Password, Email, Other.SQLStatements.GetJoinDate(Username));
+            Other.Utilities.UpdateCurrentUser(CurrentUser);
             GUIs.SelectACharacterScreen SACS = new GUIs.SelectACharacterScreen();
 
             int WidthSize = (int) tk.getScreenSize().getWidth();

@@ -139,6 +139,45 @@ public class SQLStatements {
 
     }
     
+    public static void UpdateUser (Objects.User user){
+        try{
+            String sql = "SELECT * FROM Users WHERE Username="+user.getUsername();
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            if(resultSet.next()){
+                resultSet.moveToInsertRow();
+                resultSet.updateString("Username", user.getUsername());
+                resultSet.updateString("Email", user.getEmail());
+                resultSet.updateString("Password", user.getPassword());
+                resultSet.updateString("JoinDate", user.getJoinDate());
+                resultSet.updateRow();
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error with updating user: "+e);
+        }
+    }
+    
+    public static String GetJoinDate(String Username){
+        String JoinDate = null;
+        try{
+           String sql = "SELECT JoinDate FROM Users WHERE Username='"+Username+"'";
+           ResultSet resultSet = ExecuteQuery(sql, getConnection());
+           
+           if (resultSet.next()){
+               JoinDate = resultSet.getString("JoinDate");
+               return JoinDate;
+           }
+           resultSet.close();
+           connection.close();
+           
+        }
+        catch(Exception e){
+            System.out.println("Error with gettng join date: "+e);
+        }
+        return JoinDate;
+    }
+    
 
     // </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="SQL Statements To Do With Characters Table">
@@ -218,9 +257,15 @@ public class SQLStatements {
         int CharacterNumber = -1;
         
         try{
-            String sql = "SELECT COUNT * FROM Characters WHERE Username ="+Username;
+            String sql = "SELECT COUNT (*) AS myInt FROM Characters WHERE Username='"+Username+"'";
             ResultSet resultSet = ExecuteQuery(sql, getConnection());
             
+            if(resultSet.next()){
+                CharacterNumber = resultSet.getInt("myInt");
+            }
+            
+            resultSet.close();
+            connection.close();
             
         }
         catch (Exception e){
@@ -233,7 +278,7 @@ public class SQLStatements {
     public static ArrayList<Objects.Character> GetAllUserCharacters(String Username){
         ArrayList<Objects.Character> UserCharacters = new ArrayList<>();
         try{
-            String sql = "SELECT * FROM Characters WHERE Username="+Username;
+            String sql = "SELECT * FROM Characters WHERE Username='"+Username+"'";
             ResultSet resultSet = ExecuteQuery(sql, getConnection());
             
             while (resultSet.next()) {
@@ -246,6 +291,15 @@ public class SQLStatements {
         catch (Exception e){
             System.out.println("Error with getting all user characters: "+e);
             return null;
+        }
+    }
+    
+    public static void UpdateCharacter (Objects.Character character){
+        try{
+            String sql = "";
+        }
+        catch (Exception e){
+            System.out.println("Error with updating character: "+e);
         }
     }
     

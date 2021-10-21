@@ -4,6 +4,7 @@
 package GUIs;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 
 public class SelectACharacterScreen extends javax.swing.JFrame {
@@ -29,8 +30,7 @@ public class SelectACharacterScreen extends javax.swing.JFrame {
         Label5.setVisible(false);
         
         
-        //GET ARRAY LIST WITH ALL CURRENT CHARACTERS
-        System.out.println(Other.NEAGame.CurrentUser.get(0).getUsername()); //for testing
+        ArrayList<Objects.Character> UserCharacters = Other.SQLStatements.GetAllUserCharacters(Other.NEAGame.CurrentUser.get(0).getUsername());
         
         switch (CharacterNumber){
                 case 1:
