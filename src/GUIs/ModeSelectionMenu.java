@@ -55,11 +55,21 @@ public class ModeSelectionMenu extends javax.swing.JFrame {
 
         LevelModeButton.setBorderPainted(false);
         LevelModeButton.setContentAreaFilled(false);
+        LevelModeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LevelModeButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(LevelModeButton);
         LevelModeButton.setBounds(630, 370, 660, 180);
 
         DailyModeButton.setBorderPainted(false);
         DailyModeButton.setContentAreaFilled(false);
+        DailyModeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DailyModeButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(DailyModeButton);
         DailyModeButton.setBounds(629, 595, 660, 180);
 
@@ -106,6 +116,32 @@ public class ModeSelectionMenu extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_SettingsButtonActionPerformed
+
+    private void DailyModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DailyModeButtonActionPerformed
+        
+       GUIs.DomainSelectionScreen domains = new GUIs.DomainSelectionScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        domains.setSize(WidthSize, HeightSize);
+        domains.setVisible(true);
+        this.dispose(); 
+        
+        
+    }//GEN-LAST:event_DailyModeButtonActionPerformed
+
+    private void LevelModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelModeButtonActionPerformed
+        
+        GUIs.LevelModeSelectionScreen LevelModeSelection = new GUIs.LevelModeSelectionScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        LevelModeSelection.setSize(WidthSize, HeightSize);
+        LevelModeSelection.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_LevelModeButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,7 @@
 
 package GUIs;
 
+import GUIs.*;
 import java.awt.Toolkit;
 
 public class StartUpScreen extends javax.swing.JFrame {

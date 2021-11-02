@@ -33,15 +33,19 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ThreeDomainsErrorMessage = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
         FearStart = new javax.swing.JButton();
         SunStart = new javax.swing.JButton();
         NightStart = new javax.swing.JButton();
-        ThreeDomainsErrorMessage = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        ThreeDomainsErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/3 Domains Played Message.jpg"))); // NOI18N
+        getContentPane().add(ThreeDomainsErrorMessage);
+        ThreeDomainsErrorMessage.setBounds(1520, 410, 300, 310);
 
         BackButton.setBorderPainted(false);
         BackButton.setContentAreaFilled(false);
@@ -82,10 +86,6 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         });
         getContentPane().add(NightStart);
         NightStart.setBounds(829, 885, 270, 120);
-
-        ThreeDomainsErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/3 Domains Played Message.jpg"))); // NOI18N
-        getContentPane().add(ThreeDomainsErrorMessage);
-        ThreeDomainsErrorMessage.setBounds(720, 410, 510, 310);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Domain Selection Screen.jpg"))); // NOI18N
         getContentPane().add(Background);

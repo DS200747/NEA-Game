@@ -40,20 +40,30 @@ public class CharacterSettings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BackButton = new javax.swing.JButton();
         OtherButton = new javax.swing.JButton();
         FemaleButton = new javax.swing.JButton();
         MaleButton = new javax.swing.JButton();
+        GenderButton = new javax.swing.JButton();
         GenderSection = new javax.swing.JLabel();
         NicknameConfirmButton = new javax.swing.JButton();
         NicknameField = new javax.swing.JTextField();
-        NicknameSection = new javax.swing.JLabel();
-        BackButton = new javax.swing.JButton();
         NicknameButton = new javax.swing.JButton();
-        GenderButton = new javax.swing.JButton();
+        NicknameSection = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        BackButton.setBorderPainted(false);
+        BackButton.setContentAreaFilled(false);
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BackButton);
+        BackButton.setBounds(39, 55, 190, 70);
 
         OtherButton.setBorderPainted(false);
         OtherButton.setContentAreaFilled(false);
@@ -85,6 +95,16 @@ public class CharacterSettings extends javax.swing.JFrame {
         getContentPane().add(MaleButton);
         MaleButton.setBounds(139, 895, 370, 170);
 
+        GenderButton.setBorderPainted(false);
+        GenderButton.setContentAreaFilled(false);
+        GenderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenderButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GenderButton);
+        GenderButton.setBounds(1199, 245, 310, 150);
+
         GenderSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Gender Section.jpg"))); // NOI18N
         getContentPane().add(GenderSection);
         GenderSection.setBounds(0, 420, 1930, 680);
@@ -101,20 +121,6 @@ public class CharacterSettings extends javax.swing.JFrame {
         getContentPane().add(NicknameField);
         NicknameField.setBounds(139, 552, 1640, 70);
 
-        NicknameSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Nickname Section.jpg"))); // NOI18N
-        getContentPane().add(NicknameSection);
-        NicknameSection.setBounds(0, 410, 1930, 690);
-
-        BackButton.setBorderPainted(false);
-        BackButton.setContentAreaFilled(false);
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BackButton);
-        BackButton.setBounds(39, 55, 190, 70);
-
         NicknameButton.setBorderPainted(false);
         NicknameButton.setContentAreaFilled(false);
         NicknameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,15 +131,9 @@ public class CharacterSettings extends javax.swing.JFrame {
         getContentPane().add(NicknameButton);
         NicknameButton.setBounds(429, 245, 320, 150);
 
-        GenderButton.setBorderPainted(false);
-        GenderButton.setContentAreaFilled(false);
-        GenderButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenderButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GenderButton);
-        GenderButton.setBounds(1199, 245, 310, 150);
+        NicknameSection.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Nickname Section.jpg"))); // NOI18N
+        getContentPane().add(NicknameSection);
+        NicknameSection.setBounds(0, 410, 1930, 690);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Change Character Details Base.jpg"))); // NOI18N
         getContentPane().add(background);
@@ -157,6 +157,11 @@ public class CharacterSettings extends javax.swing.JFrame {
         NicknameSection.setVisible(true);
         NicknameField.setVisible(true);
         NicknameConfirmButton.setVisible(true);
+        
+        GenderSection.setVisible(false);
+        MaleButton.setVisible(false);
+        FemaleButton.setVisible(false);
+        OtherButton.setVisible(false);
     }//GEN-LAST:event_NicknameButtonActionPerformed
 
     private void NicknameConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NicknameConfirmButtonActionPerformed
@@ -168,6 +173,10 @@ public class CharacterSettings extends javax.swing.JFrame {
         MaleButton.setVisible(true);
         FemaleButton.setVisible(true);
         OtherButton.setVisible(true);
+        
+        NicknameSection.setVisible(false);
+        NicknameField.setVisible(false);
+        NicknameConfirmButton.setVisible(false);
     }//GEN-LAST:event_GenderButtonActionPerformed
 
     private void MaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaleButtonActionPerformed
