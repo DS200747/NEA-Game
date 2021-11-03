@@ -16,7 +16,9 @@ public class AccountSettings extends javax.swing.JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
     
-    public String CurrentHashedPassword;
+    private String CurrentHashedPassword;
+    private String NewHashedPassword;
+    
 
     /**
      * Creates new form AccountSettings
@@ -30,18 +32,22 @@ public class AccountSettings extends javax.swing.JFrame {
         UniqueUsernameErrorMessage.setVisible(false);
         LongUsernameErrorMessage.setVisible(false);
         InappropriateUsernameErrorMessage.setVisible(false);
+        UsernameChangedSuccessfullyMessage.setVisible(false);
 
         PasswordSection.setVisible(false);
         CurrentPasswordField.setVisible(false);
         NewPasswordField.setVisible(false);
         PasswordConfirmButton.setVisible(false);
         PasswordCharactersErrorMessage.setVisible(false);
+        IncorrectCurrentPasswordErrorMessage.setVisible(false);
+        PasswordChangedSuccessfullyMessage.setVisible(false);
 
         EmailSection.setVisible(false);
         EmailField.setVisible(false);
         EmailConfirmButton.setVisible(false);
         InvalidEmailErrorMessage.setVisible(false);
         UniqueEmailErrorMessage.setVisible(false);
+        EmailChangedSuccessfullyMessage.setVisible(false);
         
     }
 
@@ -54,6 +60,10 @@ public class AccountSettings extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        UsernameChangedSuccessfullyMessage = new javax.swing.JLabel();
+        EmailChangedSuccessfullyMessage = new javax.swing.JLabel();
+        PasswordChangedSuccessfullyMessage = new javax.swing.JLabel();
+        IncorrectCurrentPasswordErrorMessage = new javax.swing.JLabel();
         PasswordCharactersErrorMessage = new javax.swing.JLabel();
         UniqueEmailErrorMessage = new javax.swing.JLabel();
         InvalidEmailErrorMessage = new javax.swing.JLabel();
@@ -78,6 +88,22 @@ public class AccountSettings extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        UsernameChangedSuccessfullyMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Username Changed Successfully Message.png"))); // NOI18N
+        getContentPane().add(UsernameChangedSuccessfullyMessage);
+        UsernameChangedSuccessfullyMessage.setBounds(720, 770, 440, 130);
+
+        EmailChangedSuccessfullyMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Email Changed Successfully Message.png"))); // NOI18N
+        getContentPane().add(EmailChangedSuccessfullyMessage);
+        EmailChangedSuccessfullyMessage.setBounds(720, 770, 410, 130);
+
+        PasswordChangedSuccessfullyMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Password Changed Successfully Message.png"))); // NOI18N
+        getContentPane().add(PasswordChangedSuccessfullyMessage);
+        PasswordChangedSuccessfullyMessage.setBounds(720, 770, 440, 140);
+
+        IncorrectCurrentPasswordErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Incorrect Current Password Error Message.png"))); // NOI18N
+        getContentPane().add(IncorrectCurrentPasswordErrorMessage);
+        IncorrectCurrentPasswordErrorMessage.setBounds(720, 780, 450, 130);
 
         PasswordCharactersErrorMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Password Characters Error Message.png"))); // NOI18N
         getContentPane().add(PasswordCharactersErrorMessage);
@@ -228,6 +254,7 @@ public class AccountSettings extends javax.swing.JFrame {
         UniqueUsernameErrorMessage.setVisible(false);
         LongUsernameErrorMessage.setVisible(false);
         InappropriateUsernameErrorMessage.setVisible(false);
+        UsernameChangedSuccessfullyMessage.setVisible(false);
         
         String NewUsername = UsernameField.getText();
         boolean check = false;
@@ -242,7 +269,7 @@ public class AccountSettings extends javax.swing.JFrame {
             String LoweredUsername= NewUsername.toLowerCase();
             System.out.println(LoweredUsername);
             
-            if (LoweredUsername.contains("dog")||LoweredUsername.contains("yellow") || LoweredUsername.contains("four")){
+            if (LoweredUsername.contains("dog")||LoweredUsername.contains("yellow") || LoweredUsername.contains("4")){
                 InappropriateUsernameErrorMessage.setVisible(true);
                 check = true;
                 break;
@@ -271,6 +298,9 @@ public class AccountSettings extends javax.swing.JFrame {
             Objects.User ChangingUsername = new Objects.User(NewUsername, Other.NEAGame.CurrentUser.get(0).getEmail(),Other.NEAGame.CurrentUser.get(0).getPassword(),Other.NEAGame.CurrentUser.get(0).getJoinDate());
             Other.SQLStatements.UpdateUser(ChangingUsername);
             Other.Utilities.UpdateCurrentUser(ChangingUsername);
+            //MAKE SURE I UPDATE ALL OF THE USERNAMES IN THE CHARACTER TABLE TOO
+            
+            UsernameChangedSuccessfullyMessage.setVisible(true);
         }
 
 
@@ -280,22 +310,26 @@ public class AccountSettings extends javax.swing.JFrame {
         UsernameSection.setVisible(true);
         UsernameField.setVisible(true);
         UsernameConfirmButton.setVisible(true);
- 
+        
         UniqueUsernameErrorMessage.setVisible(false);
         LongUsernameErrorMessage.setVisible(false);
         InappropriateUsernameErrorMessage.setVisible(false);
+        UsernameChangedSuccessfullyMessage.setVisible(false);
 
         PasswordSection.setVisible(false);
         CurrentPasswordField.setVisible(false);
         NewPasswordField.setVisible(false);
         PasswordConfirmButton.setVisible(false);
         PasswordCharactersErrorMessage.setVisible(false);
+        IncorrectCurrentPasswordErrorMessage.setVisible(false);
+        PasswordChangedSuccessfullyMessage.setVisible(false);
 
         EmailSection.setVisible(false);
         EmailField.setVisible(false);
         EmailConfirmButton.setVisible(false);
         InvalidEmailErrorMessage.setVisible(false);
         UniqueEmailErrorMessage.setVisible(false);
+        EmailChangedSuccessfullyMessage.setVisible(false);
     }//GEN-LAST:event_UsernameButtonActionPerformed
 
     private void PasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordButtonActionPerformed
@@ -310,18 +344,24 @@ public class AccountSettings extends javax.swing.JFrame {
         UniqueUsernameErrorMessage.setVisible(false);
         LongUsernameErrorMessage.setVisible(false);
         InappropriateUsernameErrorMessage.setVisible(false);
+        UsernameChangedSuccessfullyMessage.setVisible(false);
 
         PasswordCharactersErrorMessage.setVisible(false);
+        IncorrectCurrentPasswordErrorMessage.setVisible(false);
+        PasswordChangedSuccessfullyMessage.setVisible(false);
 
         EmailSection.setVisible(false);
         EmailField.setVisible(false);
         EmailConfirmButton.setVisible(false);
         InvalidEmailErrorMessage.setVisible(false);
         UniqueEmailErrorMessage.setVisible(false);
+        EmailChangedSuccessfullyMessage.setVisible(false);
     }//GEN-LAST:event_PasswordButtonActionPerformed
 
     private void PasswordConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordConfirmButtonActionPerformed
         PasswordCharactersErrorMessage.setVisible(false);
+        IncorrectCurrentPasswordErrorMessage.setVisible(false);
+        PasswordChangedSuccessfullyMessage.setVisible(false);
         
         String CurrentPassword = new String(CurrentPasswordField.getPassword());
         try{
@@ -333,20 +373,34 @@ public class AccountSettings extends javax.swing.JFrame {
         String NewPassword = new String(NewPasswordField.getPassword());
         boolean check = false;
         
-        //NEW TO MAKE THEM PASSWORD FIELDS AND NOT TEXT FIELDS
-        
         while (true){
             
-            if (CurrentHashedPassword.equals(Other.NEAGame.CurrentUser.get(0).getPassword())){
-                
+            if(Other.Utilities.ComparePasswords(CurrentHashedPassword, Other.NEAGame.CurrentUser.get(0).getPassword()) == false){
+                IncorrectCurrentPasswordErrorMessage.setVisible(true);
+                check = true;
+                break;
             }
-            
-            
+ 
             if (NewPassword.length() < 8) {
                 PasswordCharactersErrorMessage.setVisible(true);
                 check = true;
                 break;
             }
+            break;
+        }
+        
+        if (check == false){
+            try{
+            NewHashedPassword = Other.Utilities.GetHashedPassword(NewPassword);
+            }
+            catch (Exception e){
+                System.out.println("Error with hashing new password in account settings: "+e);
+            }
+            
+            Objects.User ChangingPassword = new Objects.User(Other.NEAGame.CurrentUser.get(0).getUsername(), Other.NEAGame.CurrentUser.get(0).getEmail(), NewHashedPassword,Other.NEAGame.CurrentUser.get(0).getJoinDate());
+            Other.SQLStatements.UpdateUser(ChangingPassword);
+            Other.Utilities.UpdateCurrentUser(ChangingPassword);
+            PasswordChangedSuccessfullyMessage.setVisible(true);
         }
         
         
@@ -364,20 +418,25 @@ public class AccountSettings extends javax.swing.JFrame {
         UniqueUsernameErrorMessage.setVisible(false);
         LongUsernameErrorMessage.setVisible(false);
         InappropriateUsernameErrorMessage.setVisible(false);
+        UsernameChangedSuccessfullyMessage.setVisible(false);
 
         PasswordSection.setVisible(false);
         CurrentPasswordField.setVisible(false);
         NewPasswordField.setVisible(false);
         PasswordConfirmButton.setVisible(false);
         PasswordCharactersErrorMessage.setVisible(false);
+        IncorrectCurrentPasswordErrorMessage.setVisible(false);
+        PasswordChangedSuccessfullyMessage.setVisible(false);
 
         InvalidEmailErrorMessage.setVisible(false);
         UniqueEmailErrorMessage.setVisible(false);
+        EmailChangedSuccessfullyMessage.setVisible(false);
     }//GEN-LAST:event_EmailButtonActionPerformed
 
     private void EmailConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailConfirmButtonActionPerformed
         InvalidEmailErrorMessage.setVisible(false);
         UniqueEmailErrorMessage.setVisible(false);
+        EmailChangedSuccessfullyMessage.setVisible(false);
         
         String NewEmail = EmailField.getText();
         boolean check = false;
@@ -411,7 +470,10 @@ public class AccountSettings extends javax.swing.JFrame {
         }
         
         if (check == false){
-            //ADD UPDATE BIT HERE
+            Objects.User ChangingEmail = new Objects.User(Other.NEAGame.CurrentUser.get(0).getUsername(), NewEmail, Other.NEAGame.CurrentUser.get(0).getPassword(),Other.NEAGame.CurrentUser.get(0).getJoinDate());
+            Other.SQLStatements.UpdateUser(ChangingEmail);
+            Other.Utilities.UpdateCurrentUser(ChangingEmail);
+            EmailChangedSuccessfullyMessage.setVisible(true);
         }
         
         
@@ -468,20 +530,24 @@ public class AccountSettings extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JPasswordField CurrentPasswordField;
     private javax.swing.JButton EmailButton;
+    private javax.swing.JLabel EmailChangedSuccessfullyMessage;
     private javax.swing.JButton EmailConfirmButton;
     private javax.swing.JTextField EmailField;
     private javax.swing.JLabel EmailSection;
     private javax.swing.JLabel InappropriateUsernameErrorMessage;
+    private javax.swing.JLabel IncorrectCurrentPasswordErrorMessage;
     private javax.swing.JLabel InvalidEmailErrorMessage;
     private javax.swing.JLabel LongUsernameErrorMessage;
     private javax.swing.JPasswordField NewPasswordField;
     private javax.swing.JButton PasswordButton;
+    private javax.swing.JLabel PasswordChangedSuccessfullyMessage;
     private javax.swing.JLabel PasswordCharactersErrorMessage;
     private javax.swing.JButton PasswordConfirmButton;
     private javax.swing.JLabel PasswordSection;
     private javax.swing.JLabel UniqueEmailErrorMessage;
     private javax.swing.JLabel UniqueUsernameErrorMessage;
     private javax.swing.JButton UsernameButton;
+    private javax.swing.JLabel UsernameChangedSuccessfullyMessage;
     private javax.swing.JButton UsernameConfirmButton;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel UsernameSection;

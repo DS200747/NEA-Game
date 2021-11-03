@@ -141,7 +141,7 @@ public class SQLStatements {
     
     public static void UpdateUser (Objects.User user){
         try{
-            String sql = "SELECT * FROM Users WHERE Username="+user.getUsername();
+            String sql = "SELECT * FROM Users WHERE Username='"+user.getUsername()+"'";
             ResultSet resultSet = ExecuteQuery(sql, getConnection());
             
             if(resultSet.next()){
