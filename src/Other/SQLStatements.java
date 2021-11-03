@@ -209,8 +209,6 @@ public class SQLStatements {
         }
     }
     
-
-    
     public static int GetDomainsPlayed(int CharacterID){
         int DomainsPlayed = -1;
         
@@ -296,7 +294,21 @@ public class SQLStatements {
     
     public static void UpdateCharacter (Objects.Character character){
         try{
-            String sql = "";
+            String sql = "SELECT * FROM Characters WHERE CharacterID='"+character.getCharacterID()+"'";
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            if(resultSet.next()){
+                resultSet.moveToInsertRow();
+                //CharacterID - autonumber?
+                resultSet.updateInt("CharacterID", character.getCharacterID());
+                resultSet.updateString("Username", character.getUsername());
+                resultSet.updateString("Nickname", character.getNickname());
+                resultSet.updateString("CharacterGender", character.getCharacterGender());
+                resultSet.updateInt("ClassID", character.getClassID());
+                resultSet.updateInt("DomainAmount", character.getDomainAmount());
+                resultSet.updateString("LastDomainDate", character.getLastDomainDate());
+                resultSet.updateRow();
+            }
         }
         catch (Exception e){
             System.out.println("Error with updating character: "+e);

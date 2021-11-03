@@ -86,7 +86,6 @@ public class NicknameChoosingScreen extends javax.swing.JFrame {
             }
             
             String LoweredNickname = Nickname.toLowerCase();
-            System.out.println(LoweredNickname);
             
             if (LoweredNickname.contains("dog") || LoweredNickname.contains("yellow") || LoweredNickname.contains("four")){
                 InappropriateNicknameErrorMessage.setVisible(true);
