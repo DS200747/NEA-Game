@@ -169,21 +169,16 @@ public class RegisterScreen extends javax.swing.JFrame {
             }
             
             ArrayList<String> ExistingEmails = SQLStatements.GetExistingEmails();
-            System.out.println("1");
             
             for (int i = 0; i < ExistingEmails.size(); i++) {
                 if (ExistingEmails.get(i).equals(Email)) {
-                    System.out.println("2");
                     UniqueEmailErrorMessage.setVisible(true);
-                    System.out.println("3");
                     check = true;
-                    System.out.println("4");
                     break;
                 }
             }
             
             if(UniqueEmailErrorMessage.isVisible() == true){
-                System.out.println("5");
                 break;
             }
             
