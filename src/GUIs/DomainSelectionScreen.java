@@ -10,7 +10,7 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
     private static int DomainAmount;
     private static String DomainDate;
     
-    public String DomainType;
+    public static String DomainType;
     public String MonsterName;
 
     public DomainSelectionScreen() {

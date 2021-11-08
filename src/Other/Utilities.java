@@ -76,9 +76,9 @@ public class Utilities {
     
     public static boolean CheckDomainAmount(int DomainAmount){
         if(DomainAmount == 3){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
     

@@ -152,6 +152,7 @@ public class SQLStatements {
                 resultSet.updateString("JoinDate", user.getJoinDate());
                 resultSet.updateRow();
             }
+            connection.close();
         }
         catch (Exception e){
             System.out.println("Error with updating user: "+e);
@@ -207,48 +208,6 @@ public class SQLStatements {
         catch (Exception e){
             System.out.println("Error with adding new character: "+e);
         }
-    }
-    
-    public static int GetDomainsPlayed(int CharacterID){
-        int DomainsPlayed = -1;
-        
-        try{
-            String sql = "SELECT DomainAmount FROM Characters WHERE CharacterID ="+CharacterID;
-            ResultSet resultSet = ExecuteQuery(sql, getConnection());
-            
-            if(resultSet.next()){
-                DomainsPlayed = resultSet.getInt("DomainAmount");
-            }
-            
-            resultSet.close();
-            connection.close();
-        }
-        catch (Exception e){
-            System.out.println("Error with getting the domains played: "+e);
-        }
-        
-        return DomainsPlayed;
-    }
-    
-    public static String GetDomainDate(int CharacterID){
-        String DomainDate = null;
-        
-        try{
-            String sql = "SELECT LastDomainDate FROM Characters WHERE CharacterID ="+CharacterID;
-            ResultSet resultSet = ExecuteQuery(sql, getConnection());
-            
-            if(resultSet.next()){
-                DomainDate = resultSet.getString("LastDomainDate");
-            }
-            
-            resultSet.close();
-            connection.close();
-        }
-        catch(Exception e){
-            System.out.println("Error with getting the domain date: "+e);
-        }
-        
-        return DomainDate;
     }
     
     public static int CountingCharacters (String Username){
@@ -309,6 +268,7 @@ public class SQLStatements {
                 resultSet.updateString("LastDomainDate", character.getLastDomainDate());
                 resultSet.updateRow();
             }
+            connection.close();
         }
         catch (Exception e){
             System.out.println("Error with updating character: "+e);
@@ -337,6 +297,25 @@ public class SQLStatements {
         
         return NormalMonsters;
         
+    }
+    
+    public static ArrayList<Objects.Monster> GetCertainMonster(String Name){
+        ArrayList<Objects.Monster> CertainMonster = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM Monsters WHERE MonsterName='"+Name+"'";
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            while(resultSet.next()){
+                Objects.Monster NextMonster = new Objects.Monster(resultSet.getInt("MonsterID"), resultSet.getString("MonsterName"), resultSet.getInt("MonsterHealth"), resultSet.getInt("MaxMonsterAttack"), resultSet.getInt("MinMonsterAttack"), resultSet.getString("MonsterType"));
+                CertainMonster.add(NextMonster);
+            }
+            
+            connection.close();
+        }
+        catch (Exception e){
+            System.out.println("Error with getting certain monsters: "+e);
+        }
+        return CertainMonster;
     }
     
     

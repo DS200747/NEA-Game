@@ -11,11 +11,12 @@ package GUIs;
  */
 public class ForestBattleScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ForestBattleScreen
-     */
+   private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
+    
+    
     public ForestBattleScreen() {
         initComponents();
+        
     }
 
     /**
@@ -27,8 +28,19 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BattleQuitConfirmationBox = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        BattleQuitConfirmationBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Battle Quit Confirmation.jpg"))); // NOI18N
+        getContentPane().add(BattleQuitConfirmationBox);
+        BattleQuitConfirmationBox.setBounds(740, 330, 510, 310);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Forest Battle Background.jpg"))); // NOI18N
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1930, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,5 +81,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel BattleQuitConfirmationBox;
     // End of variables declaration//GEN-END:variables
 }
