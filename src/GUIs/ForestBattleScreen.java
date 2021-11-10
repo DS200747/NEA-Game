@@ -1,21 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUIs;
 
-/**
- *
- * @author DS200747
- */
+import java.awt.Toolkit;
+
 public class ForestBattleScreen extends javax.swing.JFrame {
+    
+    Toolkit tk = Toolkit.getDefaultToolkit();
 
    private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
+   private static String Monster = GUIs.DomainSelectionScreen.MonsterName;
     
     
     public ForestBattleScreen() {
         initComponents();
+        
+        BattleQuitConfirmationBox.setVisible(false);
+        YesButton.setVisible(false);
+        NoButton.setVisible(false);
+        
+        Ghost.setVisible(false);
+        
+        PlayerHealth85.setVisible(false);
+        
+        MonsterHealth85.setVisible(false);
+        
+        PlayerName.setText(Other.NEAGame.CurrentCharacter.get(0).getNickname());
+        MonsterName.setText(Monster);
         
     }
 
@@ -28,15 +37,87 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        YesButton = new javax.swing.JButton();
+        NoButton = new javax.swing.JButton();
         BattleQuitConfirmationBox = new javax.swing.JLabel();
+        ExitButton = new javax.swing.JButton();
+        PlayerHealth85 = new javax.swing.JLabel();
+        PlayerHealth100 = new javax.swing.JLabel();
+        PlayerName = new javax.swing.JLabel();
+        MonsterHealth85 = new javax.swing.JLabel();
+        MonsterHealth100 = new javax.swing.JLabel();
+        MonsterName = new javax.swing.JLabel();
+        Ghost = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        YesButton.setBorderPainted(false);
+        YesButton.setContentAreaFilled(false);
+        YesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YesButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(YesButton);
+        YesButton.setBounds(800, 570, 60, 40);
+
+        NoButton.setBorderPainted(false);
+        NoButton.setContentAreaFilled(false);
+        NoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NoButton);
+        NoButton.setBounds(1120, 570, 40, 40);
+
         BattleQuitConfirmationBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Battle Quit Confirmation.jpg"))); // NOI18N
         getContentPane().add(BattleQuitConfirmationBox);
         BattleQuitConfirmationBox.setBounds(740, 330, 510, 310);
+
+        ExitButton.setBorderPainted(false);
+        ExitButton.setContentAreaFilled(false);
+        ExitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ExitButton);
+        ExitButton.setBounds(1520, 860, 360, 190);
+
+        PlayerHealth85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health85.7.png"))); // NOI18N
+        getContentPane().add(PlayerHealth85);
+        PlayerHealth85.setBounds(680, 770, 360, 70);
+
+        PlayerHealth100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health100.png"))); // NOI18N
+        getContentPane().add(PlayerHealth100);
+        PlayerHealth100.setBounds(680, 770, 360, 70);
+
+        PlayerName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        PlayerName.setForeground(new java.awt.Color(255, 255, 255));
+        PlayerName.setText("Name");
+        getContentPane().add(PlayerName);
+        PlayerName.setBounds(850, 740, 100, 44);
+
+        MonsterHealth85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health85.7.png"))); // NOI18N
+        getContentPane().add(MonsterHealth85);
+        MonsterHealth85.setBounds(830, 270, 360, 70);
+
+        MonsterHealth100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health100.png"))); // NOI18N
+        getContentPane().add(MonsterHealth100);
+        MonsterHealth100.setBounds(830, 270, 360, 80);
+
+        MonsterName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        MonsterName.setForeground(new java.awt.Color(255, 255, 255));
+        MonsterName.setText("Monster");
+        getContentPane().add(MonsterName);
+        MonsterName.setBounds(990, 240, 140, 50);
+
+        Ghost.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Ghost.png"))); // NOI18N
+        getContentPane().add(Ghost);
+        Ghost.setBounds(1160, 300, 410, 340);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Forest Battle Background.jpg"))); // NOI18N
         getContentPane().add(Background);
@@ -44,6 +125,29 @@ public class ForestBattleScreen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoButtonActionPerformed
+        BattleQuitConfirmationBox.setVisible(false);
+        YesButton.setVisible(false);
+        NoButton.setVisible(false);
+    }//GEN-LAST:event_NoButtonActionPerformed
+
+    private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
+        GUIs.DomainSelectionScreen domains = new GUIs.DomainSelectionScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        domains.setSize(WidthSize, HeightSize);
+        domains.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_YesButtonActionPerformed
+
+    private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
+        BattleQuitConfirmationBox.setVisible(true);
+        YesButton.setVisible(true);
+        NoButton.setVisible(true);
+    }//GEN-LAST:event_ExitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +187,15 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JLabel BattleQuitConfirmationBox;
+    private javax.swing.JButton ExitButton;
+    private javax.swing.JLabel Ghost;
+    private javax.swing.JLabel MonsterHealth100;
+    private javax.swing.JLabel MonsterHealth85;
+    private javax.swing.JLabel MonsterName;
+    private javax.swing.JButton NoButton;
+    private javax.swing.JLabel PlayerHealth100;
+    private javax.swing.JLabel PlayerHealth85;
+    private javax.swing.JLabel PlayerName;
+    private javax.swing.JButton YesButton;
     // End of variables declaration//GEN-END:variables
 }

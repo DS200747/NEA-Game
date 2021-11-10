@@ -11,7 +11,7 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
     private static String DomainDate;
     
     public static String DomainType;
-    public String MonsterName;
+    public static String MonsterName;
 
     public DomainSelectionScreen() {
         initComponents();
@@ -88,12 +88,19 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        //HAVE A VARIABLE THAT SETS ITEM TYPE UP NOW?
         
         if (check == true){
             DomainType = "Sun";
             MonsterName = "Ghost";
-            //PLAY DOMAIN HERE
+
+        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        Battle.setSize(WidthSize, HeightSize);
+        Battle.setVisible(true);
+        this.dispose();
         }else{
             ThreeDomainsErrorMessage.setVisible(true);
         }
@@ -105,12 +112,19 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        //HAVE A VARIABLE THAT SETS ITEM TYPE UP NOW?
         
         if (check == true){
             DomainType = "Fear";
             MonsterName = "Arachnid Queen";
-            //PLAY DOMAIN HERE
+
+        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        Battle.setSize(WidthSize, HeightSize);
+        Battle.setVisible(true);
+        this.dispose();
         }else{
            ThreeDomainsErrorMessage.setVisible(true); 
         }
@@ -122,12 +136,19 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        //HAVE A VARIABLE THAT SETS ITEM TYPE UP NOW?
         
         if (check == true){
             DomainType = "Night";
             MonsterName = "Vampire Overlord";
-            //PLAY DOMAIN HERE
+            
+        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
+
+        int WidthSize = (int) tk.getScreenSize().getWidth();
+        int HeightSize = (int) tk.getScreenSize().getHeight();
+
+        Battle.setSize(WidthSize, HeightSize);
+        Battle.setVisible(true);
+        this.dispose();
         }else{
             ThreeDomainsErrorMessage.setVisible(true);
         }
@@ -144,8 +165,6 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ModeMenu.setSize(WidthSize, HeightSize);
         ModeMenu.setVisible(true);
         this.dispose();
-
-
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
