@@ -10,7 +10,9 @@ public class SQLStatements {
 
     public static String DatabaseLocation = System.getProperty("user.dir") + "\\NEADatabase.accdb";
     public static Connection connection;
-    public static Objects.User CurrentUser;
+    private static Objects.User CurrentUser;
+    private static Objects.Monster CertainMonster;
+    
 
     // <editor-fold defaultstate="collapsed" desc="Basic Methods">
     public static Connection getConnection() {
@@ -299,15 +301,13 @@ public class SQLStatements {
         
     }
     
-    public static ArrayList<Objects.Monster> GetCertainMonster(String Name){
-        ArrayList<Objects.Monster> CertainMonster = new ArrayList<>();
+    public static Objects.Monster GetCertainMonster(String Name){
         try{
             String sql = "SELECT * FROM Monsters WHERE MonsterName='"+Name+"'";
             ResultSet resultSet = ExecuteQuery(sql, getConnection());
             
             while(resultSet.next()){
-                Objects.Monster NextMonster = new Objects.Monster(resultSet.getInt("MonsterID"), resultSet.getString("MonsterName"), resultSet.getInt("MonsterHealth"), resultSet.getInt("MaxMonsterAttack"), resultSet.getInt("MinMonsterAttack"), resultSet.getString("MonsterType"));
-                CertainMonster.add(NextMonster);
+                CertainMonster = new Objects.Monster(resultSet.getInt("MonsterID"), resultSet.getString("MonsterName"), resultSet.getInt("MonsterHealth"), resultSet.getInt("MaxMonsterAttack"), resultSet.getInt("MinMonsterAttack"), resultSet.getString("MonsterType"));
             }
             
             connection.close();

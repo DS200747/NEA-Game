@@ -8,6 +8,8 @@ public class ForestBattleScreen extends javax.swing.JFrame {
 
    private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
    private static String Monster = GUIs.DomainSelectionScreen.MonsterName;
+   
+   private static Objects.Monster CurrentMonster = Other.SQLStatements.GetCertainMonster(Monster);
     
     
     public ForestBattleScreen() {
@@ -19,9 +21,24 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         
         Ghost.setVisible(false);
         
+        SetMonsterImageVisible();
+        SetPlayerImageVisible();
+        
         PlayerHealth85.setVisible(false);
+        PlayerHealth71.setVisible(false);
+        PlayerHealth57.setVisible(false);
+        PlayerHealth42.setVisible(false);
+        PlayerHealth28.setVisible(false);
+        PlayerHealth14.setVisible(false);
+        PlayerHealth0.setVisible(false);
         
         MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false);
         
         PlayerName.setText(Other.NEAGame.CurrentCharacter.get(0).getNickname());
         MonsterName.setText(Monster);
@@ -40,10 +57,24 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         YesButton = new javax.swing.JButton();
         NoButton = new javax.swing.JButton();
         BattleQuitConfirmationBox = new javax.swing.JLabel();
+        BagButton = new javax.swing.JButton();
+        FightButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
+        PlayerHealth0 = new javax.swing.JLabel();
+        PlayerHealth14 = new javax.swing.JLabel();
+        PlayerHealth28 = new javax.swing.JLabel();
+        PlayerHealth42 = new javax.swing.JLabel();
+        PlayerHealth57 = new javax.swing.JLabel();
+        PlayerHealth71 = new javax.swing.JLabel();
         PlayerHealth85 = new javax.swing.JLabel();
         PlayerHealth100 = new javax.swing.JLabel();
         PlayerName = new javax.swing.JLabel();
+        MonsterHealth0 = new javax.swing.JLabel();
+        MonsterHealth14 = new javax.swing.JLabel();
+        MonsterHealth28 = new javax.swing.JLabel();
+        MonsterHealth42 = new javax.swing.JLabel();
+        MonsterHealth57 = new javax.swing.JLabel();
+        MonsterHealth71 = new javax.swing.JLabel();
         MonsterHealth85 = new javax.swing.JLabel();
         MonsterHealth100 = new javax.swing.JLabel();
         MonsterName = new javax.swing.JLabel();
@@ -77,6 +108,26 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         getContentPane().add(BattleQuitConfirmationBox);
         BattleQuitConfirmationBox.setBounds(740, 330, 510, 310);
 
+        BagButton.setBorderPainted(false);
+        BagButton.setContentAreaFilled(false);
+        BagButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BagButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BagButton);
+        BagButton.setBounds(1143, 863, 350, 180);
+
+        FightButton.setBorderPainted(false);
+        FightButton.setContentAreaFilled(false);
+        FightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FightButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FightButton);
+        FightButton.setBounds(760, 860, 360, 190);
+
         ExitButton.setBorderPainted(false);
         ExitButton.setContentAreaFilled(false);
         ExitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +137,30 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         });
         getContentPane().add(ExitButton);
         ExitButton.setBounds(1520, 860, 360, 190);
+
+        PlayerHealth0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health0.png"))); // NOI18N
+        getContentPane().add(PlayerHealth0);
+        PlayerHealth0.setBounds(680, 770, 360, 70);
+
+        PlayerHealth14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health14.2.png"))); // NOI18N
+        getContentPane().add(PlayerHealth14);
+        PlayerHealth14.setBounds(680, 770, 360, 80);
+
+        PlayerHealth28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health28.5.png"))); // NOI18N
+        getContentPane().add(PlayerHealth28);
+        PlayerHealth28.setBounds(680, 770, 360, 70);
+
+        PlayerHealth42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health42.8.png"))); // NOI18N
+        getContentPane().add(PlayerHealth42);
+        PlayerHealth42.setBounds(680, 770, 360, 70);
+
+        PlayerHealth57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health57.1.png"))); // NOI18N
+        getContentPane().add(PlayerHealth57);
+        PlayerHealth57.setBounds(680, 770, 360, 80);
+
+        PlayerHealth71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health71.4.png"))); // NOI18N
+        getContentPane().add(PlayerHealth71);
+        PlayerHealth71.setBounds(680, 770, 360, 70);
 
         PlayerHealth85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health85.7.png"))); // NOI18N
         getContentPane().add(PlayerHealth85);
@@ -100,6 +175,30 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         PlayerName.setText("Name");
         getContentPane().add(PlayerName);
         PlayerName.setBounds(850, 740, 100, 44);
+
+        MonsterHealth0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health0.png"))); // NOI18N
+        getContentPane().add(MonsterHealth0);
+        MonsterHealth0.setBounds(830, 270, 360, 70);
+
+        MonsterHealth14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health14.2.png"))); // NOI18N
+        getContentPane().add(MonsterHealth14);
+        MonsterHealth14.setBounds(830, 270, 360, 70);
+
+        MonsterHealth28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health28.5.png"))); // NOI18N
+        getContentPane().add(MonsterHealth28);
+        MonsterHealth28.setBounds(830, 270, 360, 80);
+
+        MonsterHealth42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health42.8.png"))); // NOI18N
+        getContentPane().add(MonsterHealth42);
+        MonsterHealth42.setBounds(830, 270, 360, 70);
+
+        MonsterHealth57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health57.1.png"))); // NOI18N
+        getContentPane().add(MonsterHealth57);
+        MonsterHealth57.setBounds(830, 270, 360, 80);
+
+        MonsterHealth71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health71.4.png"))); // NOI18N
+        getContentPane().add(MonsterHealth71);
+        MonsterHealth71.setBounds(830, 270, 360, 80);
 
         MonsterHealth85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Health85.7.png"))); // NOI18N
         getContentPane().add(MonsterHealth85);
@@ -130,6 +229,10 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         BattleQuitConfirmationBox.setVisible(false);
         YesButton.setVisible(false);
         NoButton.setVisible(false);
+        
+        FightButton.setVisible(true);
+        BagButton.setVisible(true);
+        ExitButton.setVisible(true);
     }//GEN-LAST:event_NoButtonActionPerformed
 
     private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
@@ -147,7 +250,19 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         BattleQuitConfirmationBox.setVisible(true);
         YesButton.setVisible(true);
         NoButton.setVisible(true);
+        
+        FightButton.setVisible(false);
+        BagButton.setVisible(false);
+        ExitButton.setVisible(false);
     }//GEN-LAST:event_ExitButtonActionPerformed
+
+    private void FightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FightButtonActionPerformed
+
+    private void BagButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BagButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,17 +298,73 @@ public class ForestBattleScreen extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void SetMonsterImageVisible(){
+       switch (Monster){
+           case "Ghost":
+               Ghost.setVisible(true);
+           break;
+           case "Arachnid Queen":
+               //ADD HERE
+           break;
+           case "Vampire Overlord":
+               //ADD HERE
+           break;
+           case "Zombie":
+               //ADD HERE
+           break;
+           case "Spider":
+               //ADD HERE
+           break;
+           case "Bat":
+               //ADD HERE
+           break;
+           case "Spirit":
+               //ADD HERE
+           break;
+       }
+    }
+    
+    private void SetPlayerImageVisible(){
+        String CharacterGender = Other.NEAGame.CurrentCharacter.get(0).getCharacterGender();
+        
+        switch (CharacterGender){
+            case "female":
+                //ADD HERE
+            break;
+            case "male":
+               //ADD HERE
+           break;
+           case "other":
+               //ADD HERE
+           break;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JButton BagButton;
     private javax.swing.JLabel BattleQuitConfirmationBox;
     private javax.swing.JButton ExitButton;
+    private javax.swing.JButton FightButton;
     private javax.swing.JLabel Ghost;
+    private javax.swing.JLabel MonsterHealth0;
     private javax.swing.JLabel MonsterHealth100;
+    private javax.swing.JLabel MonsterHealth14;
+    private javax.swing.JLabel MonsterHealth28;
+    private javax.swing.JLabel MonsterHealth42;
+    private javax.swing.JLabel MonsterHealth57;
+    private javax.swing.JLabel MonsterHealth71;
     private javax.swing.JLabel MonsterHealth85;
     private javax.swing.JLabel MonsterName;
     private javax.swing.JButton NoButton;
+    private javax.swing.JLabel PlayerHealth0;
     private javax.swing.JLabel PlayerHealth100;
+    private javax.swing.JLabel PlayerHealth14;
+    private javax.swing.JLabel PlayerHealth28;
+    private javax.swing.JLabel PlayerHealth42;
+    private javax.swing.JLabel PlayerHealth57;
+    private javax.swing.JLabel PlayerHealth71;
     private javax.swing.JLabel PlayerHealth85;
     private javax.swing.JLabel PlayerName;
     private javax.swing.JButton YesButton;

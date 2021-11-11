@@ -64,25 +64,4 @@ public class Utilities {
         Other.NEAGame.CurrentUser.add(user);
     }
     
-    // <editor-fold defaultstate="collapsed" desc="Domain Stuff">
-    
-    public static boolean CompareDomainDates(String CurrentDate, String PreviousDate){
-        if(CurrentDate.equals(PreviousDate)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    public static boolean CheckDomainAmount(int DomainAmount){
-        if(DomainAmount == 3){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    
-    //</editor-fold>
-    
 }

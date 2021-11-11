@@ -1,4 +1,3 @@
-
 package GUIs;
 
 import java.awt.Toolkit;
@@ -9,7 +8,7 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
 
     private static int DomainAmount;
     private static String DomainDate;
-    
+
     public static String DomainType;
     public static String MonsterName;
 
@@ -88,20 +87,20 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        
-        if (check == true){
+
+        if (check == true) {
             DomainType = "Sun";
             MonsterName = "Ghost";
 
-        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
+            GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
 
-        int WidthSize = (int) tk.getScreenSize().getWidth();
-        int HeightSize = (int) tk.getScreenSize().getHeight();
+            int WidthSize = (int) tk.getScreenSize().getWidth();
+            int HeightSize = (int) tk.getScreenSize().getHeight();
 
-        Battle.setSize(WidthSize, HeightSize);
-        Battle.setVisible(true);
-        this.dispose();
-        }else{
+            Battle.setSize(WidthSize, HeightSize);
+            Battle.setVisible(true);
+            this.dispose();
+        } else {
             ThreeDomainsErrorMessage.setVisible(true);
         }
 
@@ -112,21 +111,21 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        
-        if (check == true){
+
+        if (check == true) {
             DomainType = "Fear";
             MonsterName = "Arachnid Queen";
 
-        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
+            GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
 
-        int WidthSize = (int) tk.getScreenSize().getWidth();
-        int HeightSize = (int) tk.getScreenSize().getHeight();
+            int WidthSize = (int) tk.getScreenSize().getWidth();
+            int HeightSize = (int) tk.getScreenSize().getHeight();
 
-        Battle.setSize(WidthSize, HeightSize);
-        Battle.setVisible(true);
-        this.dispose();
-        }else{
-           ThreeDomainsErrorMessage.setVisible(true); 
+            Battle.setSize(WidthSize, HeightSize);
+            Battle.setVisible(true);
+            this.dispose();
+        } else {
+            ThreeDomainsErrorMessage.setVisible(true);
         }
 
 
@@ -136,20 +135,20 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
         ThreeDomainsErrorMessage.setVisible(false);
         GetDomainVariables();
         boolean check = CheckDomainVariables(DomainAmount, DomainDate);
-        
-        if (check == true){
+
+        if (check == true) {
             DomainType = "Night";
             MonsterName = "Vampire Overlord";
-            
-        GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
 
-        int WidthSize = (int) tk.getScreenSize().getWidth();
-        int HeightSize = (int) tk.getScreenSize().getHeight();
+            GUIs.ForestBattleScreen Battle = new GUIs.ForestBattleScreen();
 
-        Battle.setSize(WidthSize, HeightSize);
-        Battle.setVisible(true);
-        this.dispose();
-        }else{
+            int WidthSize = (int) tk.getScreenSize().getWidth();
+            int HeightSize = (int) tk.getScreenSize().getHeight();
+
+            Battle.setSize(WidthSize, HeightSize);
+            Battle.setVisible(true);
+            this.dispose();
+        } else {
             ThreeDomainsErrorMessage.setVisible(true);
         }
 
@@ -209,15 +208,31 @@ public class DomainSelectionScreen extends javax.swing.JFrame {
 
     private boolean CheckDomainVariables(int DomainAmount, String DomainDate) {
         String CurrentDate = Other.Utilities.GetCurrentDate();
-        boolean DateCheck = Other.Utilities.CompareDomainDates(CurrentDate, DomainDate);
-        boolean AmountCheck = Other.Utilities.CheckDomainAmount(DomainAmount);
+        boolean DateCheck = CompareDomainDates(CurrentDate, DomainDate);
+        boolean AmountCheck = CheckDomainAmount(DomainAmount);
 
-        if (DateCheck == true && AmountCheck == true){
+        if (DateCheck == true && AmountCheck == true) {
             return false;
-        }else{
+        } else {
             return true;
         }
 
+    }
+
+    private static boolean CheckDomainAmount(int DomainAmount) {
+        if (DomainAmount == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static boolean CompareDomainDates(String CurrentDate, String PreviousDate) {
+        if (CurrentDate.equals(PreviousDate)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
