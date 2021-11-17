@@ -20,6 +20,9 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         NoButton.setVisible(false);
         
         Ghost.setVisible(false);
+        Zombie.setVisible(false);
+        Spirit.setVisible(false);
+        Bat.setVisible(false);
         
         SetMonsterImageVisible();
         SetPlayerImageVisible();
@@ -78,6 +81,9 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         MonsterHealth85 = new javax.swing.JLabel();
         MonsterHealth100 = new javax.swing.JLabel();
         MonsterName = new javax.swing.JLabel();
+        Bat = new javax.swing.JLabel();
+        Spirit = new javax.swing.JLabel();
+        Zombie = new javax.swing.JLabel();
         Ghost = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
@@ -214,6 +220,18 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         getContentPane().add(MonsterName);
         MonsterName.setBounds(990, 240, 140, 50);
 
+        Bat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Bat.png"))); // NOI18N
+        getContentPane().add(Bat);
+        Bat.setBounds(1150, 280, 430, 340);
+
+        Spirit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Spirit.png"))); // NOI18N
+        getContentPane().add(Spirit);
+        Spirit.setBounds(1160, 310, 360, 320);
+
+        Zombie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Zombie.png"))); // NOI18N
+        getContentPane().add(Zombie);
+        Zombie.setBounds(1150, 270, 350, 390);
+
         Ghost.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Ghost.png"))); // NOI18N
         getContentPane().add(Ghost);
         Ghost.setBounds(1160, 300, 410, 340);
@@ -311,16 +329,16 @@ public class ForestBattleScreen extends javax.swing.JFrame {
                //ADD HERE
            break;
            case "Zombie":
-               //ADD HERE
+               Zombie.setVisible(true);
            break;
            case "Spider":
                //ADD HERE
            break;
            case "Bat":
-               //ADD HERE
+               Bat.setVisible(true);
            break;
            case "Spirit":
-               //ADD HERE
+               Spirit.setVisible(true);
            break;
        }
     }
@@ -344,6 +362,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton BagButton;
+    private javax.swing.JLabel Bat;
     private javax.swing.JLabel BattleQuitConfirmationBox;
     private javax.swing.JButton ExitButton;
     private javax.swing.JButton FightButton;
@@ -367,6 +386,8 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     private javax.swing.JLabel PlayerHealth71;
     private javax.swing.JLabel PlayerHealth85;
     private javax.swing.JLabel PlayerName;
+    private javax.swing.JLabel Spirit;
     private javax.swing.JButton YesButton;
+    private javax.swing.JLabel Zombie;
     // End of variables declaration//GEN-END:variables
 }
