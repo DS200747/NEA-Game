@@ -12,6 +12,7 @@ public class SQLStatements {
     public static Connection connection;
     private static Objects.User CurrentUser;
     private static Objects.Monster CertainMonster;
+    private static Objects.CharacterClass CertainClass;
     
 
     // <editor-fold defaultstate="collapsed" desc="Basic Methods">
@@ -320,4 +321,42 @@ public class SQLStatements {
     
     
     //</editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="SQL Statements To Do With Attacks Table">
+    
+    public static ArrayList <Objects.Attack> GetClassAttacks(int ClassID){
+        ArrayList<Objects.Attack> ClassAttacks = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM Attacks WHERE CLassID ="+ClassID;
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            while (resultSet.next()){
+                Objects.Attack NextAttack = new Objects.Attack(resultSet.getInt("AttackID"), resultSet.getString("AttackName"), resultSet.getString("AttackType"), resultSet.getInt("ClassID"), resultSet.getInt("DamageMultiplier"));
+                ClassAttacks.add(NextAttack);
+            }
+            
+            connection.close();
+        }
+        catch (Exception e){
+            System.out.println("Error with getting class attacks in SQLStatements: "+e);
+        }
+        return ClassAttacks;
+    }
+    
+    //</editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="SQL Statements To Do With CharacterClass Table">
+    public static Objects.CharacterClass GetCertainClass(int ClassID){
+        try{
+            String sql = "SELECT * FROM Classes WHERE ClassID ="+ClassID;
+            ResultSet resultSet = ExecuteQuery(sql, getConnection());
+            
+            while(resultSet.next()){
+                CertainClass = new Objects.CharacterClass(resultSet.getInt("ClassID"), resultSet.getString("ClassName"), resultSet.getInt("CharacterHealth"), resultSet.getInt("MaxCharacterAttack"), resultSet.getInt("MinCharacterAttack"));
+            }
+            connection.close();
+        }
+        catch (Exception e){
+            System.out.println("Error with Get a certain class in SQLStatements: "+e);
+        }
+        return CertainClass;
+    }
 }

@@ -1,32 +1,40 @@
 package GUIs;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 public class ForestBattleScreen extends javax.swing.JFrame {
-    
+
     Toolkit tk = Toolkit.getDefaultToolkit();
 
-   private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
-   private static String Monster = GUIs.DomainSelectionScreen.MonsterName;
-   
-   private static Objects.Monster CurrentMonster = Other.SQLStatements.GetCertainMonster(Monster);
-    
-    
+    private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
+    private static String Monster = GUIs.DomainSelectionScreen.MonsterName;
+
+    private static int PlayerClass = Other.NEAGame.CurrentCharacter.get(0).getClassID();
+    private static Objects.CharacterClass ClassInformation = Other.SQLStatements.GetCertainClass(PlayerClass);
+    private static ArrayList<Objects.Attack> ClassAttacks = Other.SQLStatements.GetClassAttacks(PlayerClass);
+    private static Objects.Monster CurrentMonster = Other.SQLStatements.GetCertainMonster(Monster);
+
+    private static double PlayerHealth;
+    private static double MonsterHealth;
+
+    private static boolean PlayerTurn = true;
+
     public ForestBattleScreen() {
         initComponents();
-        
+
         BattleQuitConfirmationBox.setVisible(false);
         YesButton.setVisible(false);
         NoButton.setVisible(false);
-        
+
         Ghost.setVisible(false);
         Zombie.setVisible(false);
         Spirit.setVisible(false);
         Bat.setVisible(false);
-        
+
         SetMonsterImageVisible();
         SetPlayerImageVisible();
-        
+
         PlayerHealth85.setVisible(false);
         PlayerHealth71.setVisible(false);
         PlayerHealth57.setVisible(false);
@@ -34,7 +42,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         PlayerHealth28.setVisible(false);
         PlayerHealth14.setVisible(false);
         PlayerHealth0.setVisible(false);
-        
+
         MonsterHealth85.setVisible(false);
         MonsterHealth71.setVisible(false);
         MonsterHealth57.setVisible(false);
@@ -42,10 +50,10 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         MonsterHealth28.setVisible(false);
         MonsterHealth14.setVisible(false);
         MonsterHealth0.setVisible(false);
-        
+
         PlayerName.setText(Other.NEAGame.CurrentCharacter.get(0).getNickname());
         MonsterName.setText(Monster);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -242,7 +250,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         BattleQuitConfirmationBox.setVisible(false);
         YesButton.setVisible(false);
         NoButton.setVisible(false);
-        
+
         FightButton.setVisible(true);
         BagButton.setVisible(true);
         ExitButton.setVisible(true);
@@ -263,18 +271,29 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         BattleQuitConfirmationBox.setVisible(true);
         YesButton.setVisible(true);
         NoButton.setVisible(true);
-        
+
         FightButton.setVisible(false);
         BagButton.setVisible(false);
         ExitButton.setVisible(false);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void FightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightButtonActionPerformed
-        // TODO add your handling code here:
+        //SET FIGHT DISPLAY BOX AND BUTTONS VISIBLE
+        //GET ATTACKS
+        //HAVE BOX SAY SOMETHING LIKE "WHAT ATTACK WOULD YOU LIKE TO USE"
+        //THEN LET BUTTONS DO WORK
+        //HAVE A VARIBALE THAT HAS ATTACK 1, ATTACK 2 ETC WITH THE OBJECT TO SEE IF IT'S AN ATTACK OR A BUFF
+        //ONCE THE ATTACK HAS ATTACKED OR BUFFED OR HEALED, CHANGE MONSTERHEALTH BAR
+        //SET PLAYERTURN TO BE FALSE
+
     }//GEN-LAST:event_FightButtonActionPerformed
 
     private void BagButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagButtonActionPerformed
-        // TODO add your handling code here:
+        // GOD HELP THIS BUTTPN
+        // BRING UP ANOTHER SCREEN ON TOP OF THIS SCREEN WITH THE BAG.
+        // FIND A WAY TO BRING UP ITEMS (LIKE I DID WITH SAC SCREEN?)
+        //HAVE SORT BUTTONS FOR ALPHABETICAL ORDER AND ITEM TYPE THEN USE RECURSIVE MERGE SORT TO SORT THEM
+        // USER WILL ONLY BE ABLE TO USE HEALTH POTIONS.
     }//GEN-LAST:event_BagButtonActionPerformed
 
     /**
@@ -310,47 +329,257 @@ public class ForestBattleScreen extends javax.swing.JFrame {
                 new ForestBattleScreen().setVisible(true);
             }
         });
+        PlayerHealth = ClassInformation.getCharacterHealth();
+        MonsterHealth = CurrentMonster.getMonsterHealth();
+
+        while (PlayerHealth > 0 && MonsterHealth > 0) {
+            if (PlayerTurn == true) {
+                //DISPLAY "IT'S YOUR TURN" OR WHAT "WHAT WOULD YOU LIKE TO DO" OR SOMETHING while setting monster turn display thingy to invisible
+                //USER WILL PRESS BUTTON
+                //PLAYER TURN NEEDS TO BE SET TO FALSE
+
+            } else if (PlayerTurn == false) {
+                //DISPLAY "IT'S THE ENEMY'S TURN" OR SOMETHING while setting player turn display thingy to invisible
+                //SET BUTTONS INVISIBLE BUT THEY'RE NOT STATIC MAKE METHOD TO DO SO.
+                //RANDOMLY GENERATE MONSTER ATTACKS AND ATTACK
+                //CHANGE PLAYER HEALTH BAR
+            }
+        }
+
+        //WHAT HAPPEN WHEN PLAYER DIES OR WINS
+        if (PlayerHealth == 0) {
+
+        }
+
+        if (MonsterHealth == 0) {
+
+        }
+
     }
-    
-    private void SetMonsterImageVisible(){
-       switch (Monster){
-           case "Ghost":
-               Ghost.setVisible(true);
-           break;
-           case "Arachnid Queen":
-               //ADD HERE
-           break;
-           case "Vampire Overlord":
-               //ADD HERE
-           break;
-           case "Zombie":
-               Zombie.setVisible(true);
-           break;
-           case "Spider":
-               //ADD HERE
-           break;
-           case "Bat":
-               Bat.setVisible(true);
-           break;
-           case "Spirit":
-               Spirit.setVisible(true);
-           break;
-       }
+
+    private void SetMonsterImageVisible() {
+        switch (Monster) {
+            case "Ghost":
+                Ghost.setVisible(true);
+                break;
+            case "Arachnid Queen":
+                //ADD HERE
+                break;
+            case "Vampire Overlord":
+                //ADD HERE
+                break;
+            case "Zombie":
+                Zombie.setVisible(true);
+                break;
+            case "Spider":
+                //ADD HERE
+                break;
+            case "Bat":
+                Bat.setVisible(true);
+                break;
+            case "Spirit":
+                Spirit.setVisible(true);
+                break;
+        }
     }
-    
-    private void SetPlayerImageVisible(){
+
+    private void SetPlayerImageVisible() {
         String CharacterGender = Other.NEAGame.CurrentCharacter.get(0).getCharacterGender();
-        
-        switch (CharacterGender){
+
+        switch (CharacterGender) {
             case "female":
                 //ADD HERE
-            break;
+                break;
             case "male":
-               //ADD HERE
-           break;
-           case "other":
-               //ADD HERE
-           break;
+                //ADD HERE
+                break;
+            case "other":
+                //ADD HERE
+                break;
+        }
+    }
+
+    private void SetPlayerHealthBar() {
+        double PlayerHealthPercentage = (PlayerHealth/ClassInformation.getCharacterHealth())*100;
+        
+        if (PlayerHealthPercentage >= 85.7) {
+            PlayerHealth100.setVisible(true);
+
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage >= 71.4 && PlayerHealthPercentage < 85.7) {
+            PlayerHealth100.setVisible(false);
+
+            PlayerHealth85.setVisible(true);
+
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage >= 57.1 && PlayerHealthPercentage < 71.4) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+
+            PlayerHealth71.setVisible(true);
+
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage >= 42.8 && PlayerHealthPercentage < 57.1) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+
+            PlayerHealth57.setVisible(true);
+
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage >= 28.5 && PlayerHealthPercentage < 42.8) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+
+            PlayerHealth42.setVisible(true);
+
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage >= 14.2 && PlayerHealthPercentage < 28.5) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+
+            PlayerHealth28.setVisible(true);
+
+            PlayerHealth14.setVisible(false);
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage > 0 && PlayerHealthPercentage < 14.2) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+
+            PlayerHealth14.setVisible(true);
+
+            PlayerHealth0.setVisible(false);
+        } else if (PlayerHealthPercentage <= 0) {
+            PlayerHealth100.setVisible(false);
+            PlayerHealth85.setVisible(false);
+            PlayerHealth71.setVisible(false);
+            PlayerHealth57.setVisible(false);
+            PlayerHealth42.setVisible(false);
+            PlayerHealth28.setVisible(false);
+            PlayerHealth14.setVisible(false);
+
+            PlayerHealth0.setVisible(true);
+        }
+    }
+    
+    private void SetMonsterHealthBar(){
+        double MonsterHealthPercentage = (MonsterHealth/CurrentMonster.getMonsterHealth())*100;
+        
+        if(MonsterHealthPercentage >= 85.7){
+        MonsterHealth100.setVisible(true);
+        
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false);
+        }else if (MonsterHealthPercentage >= 71.4 && MonsterHealthPercentage < 85.7){
+                    MonsterHealth100.setVisible(false);
+                    
+        MonsterHealth85.setVisible(true);
+        
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false);
+        }else if (MonsterHealthPercentage >= 57.1 && MonsterHealthPercentage < 71.4){
+                    MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        
+        MonsterHealth71.setVisible(true);
+        
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false);
+        }else if (MonsterHealthPercentage >= 42.8 && MonsterHealthPercentage < 57.1){
+                    MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        
+        MonsterHealth57.setVisible(true);
+        
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false);
+        }else if (MonsterHealthPercentage >= 28.5 && MonsterHealthPercentage < 42.8){
+                   MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        
+        MonsterHealth42.setVisible(true);
+        
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false); 
+        }else if (MonsterHealthPercentage >= 14.2 && MonsterHealthPercentage < 28.5){
+                   MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        
+        MonsterHealth28.setVisible(true);
+        
+        MonsterHealth14.setVisible(false);
+        MonsterHealth0.setVisible(false); 
+        }else if (MonsterHealthPercentage > 0 && MonsterHealthPercentage < 14.2){
+                    MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        
+        MonsterHealth14.setVisible(true);
+        
+        MonsterHealth0.setVisible(false);
+        }else if (MonsterHealthPercentage <= 0){
+                    MonsterHealth100.setVisible(false);
+        MonsterHealth85.setVisible(false);
+        MonsterHealth71.setVisible(false);
+        MonsterHealth57.setVisible(false);
+        MonsterHealth42.setVisible(false);
+        MonsterHealth28.setVisible(false);
+        MonsterHealth14.setVisible(false);
+        
+        MonsterHealth0.setVisible(true);
         }
     }
 
