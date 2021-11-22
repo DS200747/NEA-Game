@@ -347,6 +347,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
                 int MonsterAttack = rand.nextInt((CurrentMonster.getMaxMonsterAttack()-CurrentMonster.getMinMonsterAttack())+1)+ CurrentMonster.getMinMonsterAttack();
                 PlayerHealth = PlayerHealth - MonsterAttack;
                 SetPlayerHealthBar();
+                PlayerTurn = true;
             }
         }
 
