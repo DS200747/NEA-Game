@@ -349,7 +349,7 @@ public class SQLStatements {
             String sql = "SELECT * FROM Classes WHERE ClassID ="+ClassID;
             ResultSet resultSet = ExecuteQuery(sql, getConnection());
             
-            while(resultSet.next()){
+            if(resultSet.next()){
                 CertainClass = new Objects.CharacterClass(resultSet.getInt("ClassID"), resultSet.getString("ClassName"), resultSet.getInt("CharacterHealth"), resultSet.getInt("MaxCharacterAttack"), resultSet.getInt("MinCharacterAttack"));
             }
             connection.close();

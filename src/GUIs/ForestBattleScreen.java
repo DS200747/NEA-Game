@@ -2,10 +2,12 @@ package GUIs;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ForestBattleScreen extends javax.swing.JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
+    private static Random rand = new Random();
 
     private static String DomainType = GUIs.DomainSelectionScreen.DomainType;
     private static String Monster = GUIs.DomainSelectionScreen.MonsterName;
@@ -282,6 +284,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         //GET ATTACKS
         //HAVE BOX SAY SOMETHING LIKE "WHAT ATTACK WOULD YOU LIKE TO USE"
         //THEN LET BUTTONS DO WORK
+        //NEED TO RANDOMISE CHARACTER ATTACKS TOO
         //HAVE A VARIBALE THAT HAS ATTACK 1, ATTACK 2 ETC WITH THE OBJECT TO SEE IF IT'S AN ATTACK OR A BUFF
         //ONCE THE ATTACK HAS ATTACKED OR BUFFED OR HEALED, CHANGE MONSTERHEALTH BAR
         //SET PLAYERTURN TO BE FALSE
@@ -289,10 +292,10 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_FightButtonActionPerformed
 
     private void BagButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BagButtonActionPerformed
-        // GOD HELP THIS BUTTPN
+        // GOD HELP THIS BUTTON
         // BRING UP ANOTHER SCREEN ON TOP OF THIS SCREEN WITH THE BAG.
         // FIND A WAY TO BRING UP ITEMS (LIKE I DID WITH SAC SCREEN?)
-        //HAVE SORT BUTTONS FOR ALPHABETICAL ORDER AND ITEM TYPE THEN USE RECURSIVE MERGE SORT TO SORT THEM
+        // HAVE SORT BUTTONS FOR ALPHABETICAL ORDER AND ITEM TYPE THEN USE RECURSIVE MERGE SORT TO SORT THEM
         // USER WILL ONLY BE ABLE TO USE HEALTH POTIONS.
     }//GEN-LAST:event_BagButtonActionPerformed
 
@@ -341,18 +344,23 @@ public class ForestBattleScreen extends javax.swing.JFrame {
             } else if (PlayerTurn == false) {
                 //DISPLAY "IT'S THE ENEMY'S TURN" OR SOMETHING while setting player turn display thingy to invisible
                 //SET BUTTONS INVISIBLE BUT THEY'RE NOT STATIC MAKE METHOD TO DO SO.
-                //RANDOMLY GENERATE MONSTER ATTACKS AND ATTACK
-                //CHANGE PLAYER HEALTH BAR
+                int MonsterAttack = rand.nextInt((CurrentMonster.getMaxMonsterAttack()-CurrentMonster.getMinMonsterAttack())+1)+ CurrentMonster.getMinMonsterAttack();
+                PlayerHealth = PlayerHealth - MonsterAttack;
+                SetPlayerHealthBar();
             }
         }
 
         //WHAT HAPPEN WHEN PLAYER DIES OR WINS
-        if (PlayerHealth == 0) {
-
+        if (PlayerHealth == 0 || PlayerHealth < 0 ) {
+            //SET MONSTER IMAGE INVISIBLE
+            //IF IT'S DOMAIN, DISTRIBUTE ITEMS AND ADD ONE TO DOMAIN COUNT
+            //IF IT'S LEVEL MODE, DISPLAY CURRENT LEVEL ON ANOTHER SCREEN AND ASK IF USER WANTS TO CONTINUE WITH LEVEL MODE.
         }
 
-        if (MonsterHealth == 0) {
-
+        if (MonsterHealth == 0 || MonsterHealth < 0) {
+            //set player image invisible
+            // IF IT'S DOMAIN, SEND THEM BACK TO DOMAIN SCREEN
+            //IF LEVEL MODE, SET HIGHSCORE AS PREVIOUS LEVEL BEATEN AND SEND THEM BACK TO LEVEL MODE SCREEN
         }
 
     }
