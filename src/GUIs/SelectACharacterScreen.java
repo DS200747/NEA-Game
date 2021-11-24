@@ -25,57 +25,7 @@ public class SelectACharacterScreen extends javax.swing.JFrame {
         GreySquare4.setVisible(false);
         GreySquare5.setVisible(false);
         
-        
-        
-        
-        switch (CharacterNumber){
-                case 1:
-                    GreySquare1.setVisible(true);
-                    GreySquare1.setText(UserCharacters.get(0).getNickname());
-                    break;
-                case 2:
-                    GreySquare1.setVisible(true);
-                    GreySquare1.setText(UserCharacters.get(0).getNickname());
-                    GreySquare2.setVisible(true);
-                    GreySquare2.setText(UserCharacters.get(1).getNickname());
-                    break;
-                case 3:
-                    GreySquare1.setVisible(true);
-                    GreySquare1.setText(UserCharacters.get(0).getNickname());
-                    GreySquare2.setVisible(true);
-                    GreySquare2.setText(UserCharacters.get(1).getNickname());
-                    GreySquare3.setVisible(true);
-                    GreySquare3.setText(UserCharacters.get(2).getNickname());
-                    break;
-                case 4:
-                    GreySquare1.setVisible(true);
-                    GreySquare1.setText(UserCharacters.get(0).getNickname());
-                    GreySquare2.setVisible(true);
-                    GreySquare2.setText(UserCharacters.get(1).getNickname());
-                    GreySquare3.setVisible(true);
-                    GreySquare3.setText(UserCharacters.get(2).getNickname());
-                    GreySquare4.setVisible(true);
-                    GreySquare4.setText(UserCharacters.get(3).getNickname());
-                    break;
-                case 5:
-                    GreySquare1.setVisible(true);
-                    GreySquare1.setText(UserCharacters.get(0).getNickname());
-                    GreySquare2.setVisible(true);
-                    GreySquare2.setText(UserCharacters.get(1).getNickname());
-                    GreySquare3.setVisible(true);
-                    GreySquare3.setText(UserCharacters.get(2).getNickname());
-                    GreySquare4.setVisible(true);
-                    GreySquare4.setText(UserCharacters.get(3).getNickname());
-                    GreySquare5.setVisible(true);
-                    GreySquare5.setText(UserCharacters.get(4).getNickname());
-                    break;
-                case -1:
-                    System.out.println("Error with counting characters/ formatting grey squares.");
-                    break;
-                    
-        }
-        
-        
+        SetGreySquares();
     }
 
     @SuppressWarnings("unchecked")
@@ -322,6 +272,55 @@ public class SelectACharacterScreen extends javax.swing.JFrame {
                 new SelectACharacterScreen().setVisible(true);
             }
         });
+    }
+    
+    private void SetGreySquares(){
+                switch (CharacterNumber){
+                case 1:
+                    GreySquare1.setVisible(true);
+                    GreySquare1.setText(UserCharacters.get(0).getNickname());
+                    break;
+                case 2:
+                    GreySquare1.setVisible(true);
+                    GreySquare1.setText(UserCharacters.get(0).getNickname());
+                    GreySquare2.setVisible(true);
+                    GreySquare2.setText(UserCharacters.get(1).getNickname());
+                    break;
+                case 3:
+                    GreySquare1.setVisible(true);
+                    GreySquare1.setText(UserCharacters.get(0).getNickname());
+                    GreySquare2.setVisible(true);
+                    GreySquare2.setText(UserCharacters.get(1).getNickname());
+                    GreySquare3.setVisible(true);
+                    GreySquare3.setText(UserCharacters.get(2).getNickname());
+                    break;
+                case 4:
+                    GreySquare1.setVisible(true);
+                    GreySquare1.setText(UserCharacters.get(0).getNickname());
+                    GreySquare2.setVisible(true);
+                    GreySquare2.setText(UserCharacters.get(1).getNickname());
+                    GreySquare3.setVisible(true);
+                    GreySquare3.setText(UserCharacters.get(2).getNickname());
+                    GreySquare4.setVisible(true);
+                    GreySquare4.setText(UserCharacters.get(3).getNickname());
+                    break;
+                case 5:
+                    GreySquare1.setVisible(true);
+                    GreySquare1.setText(UserCharacters.get(0).getNickname());
+                    GreySquare2.setVisible(true);
+                    GreySquare2.setText(UserCharacters.get(1).getNickname());
+                    GreySquare3.setVisible(true);
+                    GreySquare3.setText(UserCharacters.get(2).getNickname());
+                    GreySquare4.setVisible(true);
+                    GreySquare4.setText(UserCharacters.get(3).getNickname());
+                    GreySquare5.setVisible(true);
+                    GreySquare5.setText(UserCharacters.get(4).getNickname());
+                    break;
+                case -1:
+                    System.out.println("Error with counting characters/ formatting grey squares.");
+                    break;
+                    
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

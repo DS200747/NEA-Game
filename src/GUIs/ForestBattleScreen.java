@@ -33,6 +33,19 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         Zombie.setVisible(false);
         Spirit.setVisible(false);
         Bat.setVisible(false);
+        Vampire.setVisible(false);
+        
+        FightBox.setVisible(false);
+        FightBackButton.setVisible(false);
+        FightOneButton.setVisible(false);
+        FightOneName.setVisible(false);
+        FightOneType.setVisible(false);
+        FightTwoButton.setVisible(false);
+        FightTwoName.setVisible(false);
+        FightTwoType.setVisible(false);
+        FightThreeButton.setVisible(false);
+        FightThreeName.setVisible(false);
+        FightThreeType.setVisible(false);
 
         SetMonsterImageVisible();
         SetPlayerImageVisible();
@@ -52,6 +65,8 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         MonsterHealth28.setVisible(false);
         MonsterHealth14.setVisible(false);
         MonsterHealth0.setVisible(false);
+        
+        OpponentTurnBanner.setVisible(false);
 
         PlayerName.setText(Other.NEAGame.CurrentCharacter.get(0).getNickname());
         MonsterName.setText(Monster);
@@ -62,6 +77,19 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        OpponentTurnBanner = new javax.swing.JLabel();
+        PlayerTurnBanner = new javax.swing.JLabel();
+        FightThreeType = new javax.swing.JLabel();
+        FightThreeName = new javax.swing.JLabel();
+        FightThreeButton = new javax.swing.JButton();
+        FightTwoType = new javax.swing.JLabel();
+        FightTwoName = new javax.swing.JLabel();
+        FightTwoButton = new javax.swing.JButton();
+        FightOneType = new javax.swing.JLabel();
+        FightOneName = new javax.swing.JLabel();
+        FightOneButton = new javax.swing.JButton();
+        FightBackButton = new javax.swing.JButton();
+        FightBox = new javax.swing.JLabel();
         YesButton = new javax.swing.JButton();
         NoButton = new javax.swing.JButton();
         BattleQuitConfirmationBox = new javax.swing.JLabel();
@@ -86,6 +114,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         MonsterHealth85 = new javax.swing.JLabel();
         MonsterHealth100 = new javax.swing.JLabel();
         MonsterName = new javax.swing.JLabel();
+        Vampire = new javax.swing.JLabel();
         Bat = new javax.swing.JLabel();
         Spirit = new javax.swing.JLabel();
         Zombie = new javax.swing.JLabel();
@@ -94,6 +123,88 @@ public class ForestBattleScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        OpponentTurnBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Opponent Turn Banner.png"))); // NOI18N
+        getContentPane().add(OpponentTurnBanner);
+        OpponentTurnBanner.setBounds(620, 60, 740, 180);
+
+        PlayerTurnBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Player Turn Banner.png"))); // NOI18N
+        getContentPane().add(PlayerTurnBanner);
+        PlayerTurnBanner.setBounds(620, 60, 740, 180);
+
+        FightThreeType.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        FightThreeType.setText("Type");
+        getContentPane().add(FightThreeType);
+        FightThreeType.setBounds(1680, 940, 60, 30);
+
+        FightThreeName.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        FightThreeName.setText("Name");
+        getContentPane().add(FightThreeName);
+        FightThreeName.setBounds(1650, 860, 130, 60);
+
+        FightThreeButton.setBorderPainted(false);
+        FightThreeButton.setContentAreaFilled(false);
+        FightThreeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FightThreeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FightThreeButton);
+        FightThreeButton.setBounds(1559, 825, 310, 210);
+
+        FightTwoType.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        FightTwoType.setText("Type");
+        getContentPane().add(FightTwoType);
+        FightTwoType.setBounds(1300, 950, 60, 29);
+
+        FightTwoName.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        FightTwoName.setText("Name");
+        getContentPane().add(FightTwoName);
+        FightTwoName.setBounds(1270, 870, 130, 50);
+
+        FightTwoButton.setBorderPainted(false);
+        FightTwoButton.setContentAreaFilled(false);
+        FightTwoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FightTwoButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FightTwoButton);
+        FightTwoButton.setBounds(1179, 825, 310, 210);
+
+        FightOneType.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        FightOneType.setText("Type");
+        getContentPane().add(FightOneType);
+        FightOneType.setBounds(940, 950, 60, 30);
+
+        FightOneName.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        FightOneName.setText("Name");
+        getContentPane().add(FightOneName);
+        FightOneName.setBounds(900, 870, 130, 50);
+
+        FightOneButton.setBorderPainted(false);
+        FightOneButton.setContentAreaFilled(false);
+        FightOneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FightOneButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FightOneButton);
+        FightOneButton.setBounds(819, 825, 310, 210);
+
+        FightBackButton.setBorderPainted(false);
+        FightBackButton.setContentAreaFilled(false);
+        FightBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FightBackButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(FightBackButton);
+        FightBackButton.setBounds(769, 735, 100, 50);
+
+        FightBox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Fight Box.jpg"))); // NOI18N
+        getContentPane().add(FightBox);
+        FightBox.setBounds(750, 720, 1170, 354);
 
         YesButton.setBorderPainted(false);
         YesButton.setContentAreaFilled(false);
@@ -225,6 +336,10 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         getContentPane().add(MonsterName);
         MonsterName.setBounds(990, 240, 140, 50);
 
+        Vampire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Vampire.png"))); // NOI18N
+        getContentPane().add(Vampire);
+        Vampire.setBounds(1160, 310, 350, 340);
+
         Bat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Bat.png"))); // NOI18N
         getContentPane().add(Bat);
         Bat.setBounds(1150, 280, 430, 340);
@@ -280,9 +395,28 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void FightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightButtonActionPerformed
-        //SET FIGHT DISPLAY BOX AND BUTTONS VISIBLE
-        //GET ATTACKS
-        //HAVE BOX SAY SOMETHING LIKE "WHAT ATTACK WOULD YOU LIKE TO USE"
+        FightBox.setVisible(true);
+        FightBackButton.setVisible(true);
+        FightOneButton.setVisible(true);
+        FightOneName.setText(ClassAttacks.get(0).getAttackName());
+        FightOneName.setVisible(true);
+        FightOneType.setText(ClassAttacks.get(0).getAttackType());
+        FightOneType.setVisible(true);
+        FightTwoButton.setVisible(true);
+        FightTwoName.setText(ClassAttacks.get(1).getAttackName());
+        FightTwoName.setVisible(true);
+        FightTwoType.setText(ClassAttacks.get(1).getAttackType());
+        FightTwoType.setVisible(true);
+        FightThreeButton.setVisible(true);
+        FightThreeName.setText(ClassAttacks.get(2).getAttackName());
+        FightThreeName.setVisible(true);
+        FightThreeType.setText(ClassAttacks.get(2).getAttackType());
+        FightThreeType.setVisible(true);
+        
+        FightButton.setVisible(false);
+        BagButton.setVisible(false);
+        ExitButton.setVisible(false);
+        
         //THEN LET BUTTONS DO WORK
         //NEED TO RANDOMISE CHARACTER ATTACKS TOO
         //HAVE A VARIBALE THAT HAS ATTACK 1, ATTACK 2 ETC WITH THE OBJECT TO SEE IF IT'S AN ATTACK OR A BUFF
@@ -298,6 +432,36 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         // HAVE SORT BUTTONS FOR ALPHABETICAL ORDER AND ITEM TYPE THEN USE RECURSIVE MERGE SORT TO SORT THEM
         // USER WILL ONLY BE ABLE TO USE HEALTH POTIONS.
     }//GEN-LAST:event_BagButtonActionPerformed
+
+    private void FightBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightBackButtonActionPerformed
+        FightBox.setVisible(false);
+        FightBackButton.setVisible(false);
+        FightOneButton.setVisible(false);
+        FightOneName.setVisible(false);
+        FightOneType.setVisible(false);
+        FightTwoButton.setVisible(false);
+        FightTwoName.setVisible(false);
+        FightTwoType.setVisible(false);
+        FightThreeButton.setVisible(false);
+        FightThreeName.setVisible(false);
+        FightThreeType.setVisible(false);
+        
+        FightButton.setVisible(true);
+        BagButton.setVisible(true);
+        ExitButton.setVisible(true);
+    }//GEN-LAST:event_FightBackButtonActionPerformed
+
+    private void FightOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightOneButtonActionPerformed
+        // IF STATMENTS TO SEE WHAT TYPE OF ATTACK IT IS AND THEN ATTACK IF ATTACK, BUFF IF BUFF AND HEAL IF HEAL
+    }//GEN-LAST:event_FightOneButtonActionPerformed
+
+    private void FightTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightTwoButtonActionPerformed
+        
+    }//GEN-LAST:event_FightTwoButtonActionPerformed
+
+    private void FightThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightThreeButtonActionPerformed
+        
+    }//GEN-LAST:event_FightThreeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,14 +500,21 @@ public class ForestBattleScreen extends javax.swing.JFrame {
         MonsterHealth = CurrentMonster.getMonsterHealth();
 
         while (PlayerHealth > 0 && MonsterHealth > 0) {
+            //SET THESE TO MORE WHILE LOOPS?
             if (PlayerTurn == true) {
-                //DISPLAY "IT'S YOUR TURN" OR WHAT "WHAT WOULD YOU LIKE TO DO" OR SOMETHING while setting monster turn display thingy to invisible
+                PlayerTurnBanner.setVisible(true);
+                OpponentTurnBanner.setVisible(false);
                 //USER WILL PRESS BUTTON
                 //PLAYER TURN NEEDS TO BE SET TO FALSE
 
             } else if (PlayerTurn == false) {
-                //DISPLAY "IT'S THE ENEMY'S TURN" OR SOMETHING while setting player turn display thingy to invisible
-                //SET BUTTONS INVISIBLE BUT THEY'RE NOT STATIC MAKE METHOD TO DO SO.
+                PlayerTurnBanner.setVisible(false);
+                OpponentTurnBanner.setVisible(true);
+                
+                FightButton.setVisible(false);
+                BagButton.setVisible(false);
+                ExitButton.setVisible(false);
+
                 int MonsterAttack = rand.nextInt((CurrentMonster.getMaxMonsterAttack()-CurrentMonster.getMinMonsterAttack())+1)+ CurrentMonster.getMinMonsterAttack();
                 PlayerHealth = PlayerHealth - MonsterAttack;
                 SetPlayerHealthBar();
@@ -375,7 +546,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
                 //ADD HERE
                 break;
             case "Vampire Overlord":
-                //ADD HERE
+                Vampire.setVisible(true);
                 break;
             case "Zombie":
                 Zombie.setVisible(true);
@@ -598,7 +769,18 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     private javax.swing.JLabel Bat;
     private javax.swing.JLabel BattleQuitConfirmationBox;
     private javax.swing.JButton ExitButton;
+    private javax.swing.JButton FightBackButton;
+    private javax.swing.JLabel FightBox;
     private javax.swing.JButton FightButton;
+    private javax.swing.JButton FightOneButton;
+    private javax.swing.JLabel FightOneName;
+    private javax.swing.JLabel FightOneType;
+    private javax.swing.JButton FightThreeButton;
+    private javax.swing.JLabel FightThreeName;
+    private javax.swing.JLabel FightThreeType;
+    private javax.swing.JButton FightTwoButton;
+    private javax.swing.JLabel FightTwoName;
+    private javax.swing.JLabel FightTwoType;
     private javax.swing.JLabel Ghost;
     private javax.swing.JLabel MonsterHealth0;
     private javax.swing.JLabel MonsterHealth100;
@@ -610,6 +792,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     private javax.swing.JLabel MonsterHealth85;
     private javax.swing.JLabel MonsterName;
     private javax.swing.JButton NoButton;
+    private javax.swing.JLabel OpponentTurnBanner;
     private javax.swing.JLabel PlayerHealth0;
     private javax.swing.JLabel PlayerHealth100;
     private javax.swing.JLabel PlayerHealth14;
@@ -619,7 +802,9 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     private javax.swing.JLabel PlayerHealth71;
     private javax.swing.JLabel PlayerHealth85;
     private javax.swing.JLabel PlayerName;
+    private javax.swing.JLabel PlayerTurnBanner;
     private javax.swing.JLabel Spirit;
+    private javax.swing.JLabel Vampire;
     private javax.swing.JButton YesButton;
     private javax.swing.JLabel Zombie;
     // End of variables declaration//GEN-END:variables
