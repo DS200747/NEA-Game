@@ -19,6 +19,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
 
     private static double PlayerHealth;
     private static double MonsterHealth;
+    private static int Buff = 0;
 
     private static boolean PlayerTurn = true;
 
@@ -452,15 +453,85 @@ public class ForestBattleScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_FightBackButtonActionPerformed
 
     private void FightOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightOneButtonActionPerformed
-        // IF STATMENTS TO SEE WHAT TYPE OF ATTACK IT IS AND THEN ATTACK IF ATTACK, BUFF IF BUFF AND HEAL IF HEAL
+        Objects.Attack CurrentAttack = ClassAttacks.get(0);
+        
+        if (CurrentAttack.getAttackType().equals("Damage")) {
+            int CharacterAttack = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int DamgMulti = CurrentAttack.getDamageMultiplier();
+            int TotalAttack = CharacterAttack + DamgMulti;
+            if (Buff != 0){
+                TotalAttack = TotalAttack + Buff;
+                Buff = 0;
+            }
+            MonsterHealth = MonsterHealth - TotalAttack;
+            SetMonsterHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Heal")){
+            int CharacterHeal = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int HealMulti = CurrentAttack.getDamageMultiplier();
+            int TotalHeal = CharacterHeal + HealMulti;
+            PlayerHealth = PlayerHealth + TotalHeal;
+            SetPlayerHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Buff")){
+            Buff = CurrentAttack.getDamageMultiplier();
+            PlayerTurn = false;
+        }
+        
     }//GEN-LAST:event_FightOneButtonActionPerformed
 
     private void FightTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightTwoButtonActionPerformed
+        Objects.Attack CurrentAttack = ClassAttacks.get(1);
         
+        if (CurrentAttack.getAttackType().equals("Damage")) {
+            int CharacterAttack = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int DamgMulti = CurrentAttack.getDamageMultiplier();
+            int TotalAttack = CharacterAttack + DamgMulti;
+            if (Buff != 0){
+                TotalAttack = TotalAttack + Buff;
+                Buff = 0;
+            }
+            MonsterHealth = MonsterHealth - TotalAttack;
+            SetMonsterHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Heal")){
+            int CharacterHeal = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int HealMulti = CurrentAttack.getDamageMultiplier();
+            int TotalHeal = CharacterHeal + HealMulti;
+            PlayerHealth = PlayerHealth + TotalHeal;
+            SetPlayerHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Buff")){
+            Buff = CurrentAttack.getDamageMultiplier();
+            PlayerTurn = false;
+        }
     }//GEN-LAST:event_FightTwoButtonActionPerformed
 
     private void FightThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FightThreeButtonActionPerformed
+        Objects.Attack CurrentAttack = ClassAttacks.get(2);
         
+        if (CurrentAttack.getAttackType().equals("Damage")) {
+            int CharacterAttack = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int DamgMulti = CurrentAttack.getDamageMultiplier();
+            int TotalAttack = CharacterAttack + DamgMulti;
+            if (Buff != 0){
+                TotalAttack = TotalAttack + Buff;
+                Buff = 0;
+            }
+            MonsterHealth = MonsterHealth - TotalAttack;
+            SetMonsterHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Heal")){
+            int CharacterHeal = rand.nextInt((ClassInformation.getMaxCharacterAttack()-ClassInformation.getMinCharacterAttack())+1)+ ClassInformation.getMinCharacterAttack();
+            int HealMulti = CurrentAttack.getDamageMultiplier();
+            int TotalHeal = CharacterHeal + HealMulti;
+            PlayerHealth = PlayerHealth + TotalHeal;
+            SetPlayerHealthBar();
+            PlayerTurn = false;
+        }else if (CurrentAttack.getAttackType().equals("Buff")){
+            Buff = CurrentAttack.getDamageMultiplier();
+            PlayerTurn = false;
+        }
     }//GEN-LAST:event_FightThreeButtonActionPerformed
 
     /**
@@ -501,13 +572,13 @@ public class ForestBattleScreen extends javax.swing.JFrame {
 
         while (PlayerHealth > 0 && MonsterHealth > 0) {
             //SET THESE TO MORE WHILE LOOPS?
-            if (PlayerTurn == true) {
+            while (PlayerTurn == true) {
                 PlayerTurnBanner.setVisible(true);
                 OpponentTurnBanner.setVisible(false);
-                //USER WILL PRESS BUTTON
-                //PLAYER TURN NEEDS TO BE SET TO FALSE
 
-            } else if (PlayerTurn == false) {
+            } 
+            
+            while (PlayerTurn == false) {
                 PlayerTurnBanner.setVisible(false);
                 OpponentTurnBanner.setVisible(true);
                 
@@ -520,6 +591,7 @@ public class ForestBattleScreen extends javax.swing.JFrame {
                 SetPlayerHealthBar();
                 PlayerTurn = true;
             }
+            
         }
 
         //WHAT HAPPEN WHEN PLAYER DIES OR WINS
